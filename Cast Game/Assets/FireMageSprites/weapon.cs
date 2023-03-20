@@ -11,8 +11,14 @@ public class weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        movement player = gameObject.GetComponent<movement>();
+        if (Input.GetButtonDown("Fire1") && player.mana > 0)
         {
+
+            //movement play = player.GetComponent<movement>;
+            
+            player.mana -= 100;
+              
             Shoot();
         }
     }

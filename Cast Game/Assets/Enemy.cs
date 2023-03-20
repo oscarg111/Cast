@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
         {
             player.TakeDamage(damage);
         }
-        Destroy(gameObject);
+        
     }
 
 

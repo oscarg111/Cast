@@ -6,15 +6,21 @@ public class movement : MonoBehaviour
 {
 
     public float speed = 5f;
+    public int mana = 1000;
     public Rigidbody2D rbody;
     //public Animator anim;
     private bool left;
     private bool up;
     public int health = 100;
-
+    public HealthBar healthBar;
+    public ManaBar manaBar;
     Vector2 move;
 
-   
+    private void Start()
+    {
+        healthBar.SetMaxHealth(health);
+        manaBar.SetMaxMana(mana);
+    }
 
     // Update is called once per frame
     void Update()
@@ -35,6 +41,11 @@ public class movement : MonoBehaviour
             float angle = Mathf.Atan2(move.y, move.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
+        if(move.x == 0 && move.y == 0 && mana <= 1000)
+        {
+            mana += 1;
+        }
+        manaBar.SetMana(mana);
     }
     private void FixedUpdate()
     {
@@ -44,6 +55,7 @@ public class movement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        healthBar.SetHealth(health);
         if (health <= 0)
         {
             Die();
