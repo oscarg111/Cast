@@ -5,8 +5,8 @@ using UnityEngine;
 public class HordeSpawner : MonoBehaviour
 {
     float timer = 0f;
-    float minRangeAroundPlayer = 1f;
-    float maxRangeAroundPlayer = 2f;
+    public float minRangeAroundPlayer = 1f;
+    public float maxRangeAroundPlayer = 2f;
     public GameObject ObjectToCreate;
     public GameObject ObjectToSpawnAround;
     // Start is called before the first frame update
