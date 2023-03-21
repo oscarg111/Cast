@@ -12,13 +12,13 @@ public class movement : MonoBehaviour
     private bool left;
     private bool up;
     public int health = 100;
-    public HealthBar healthBar;
+    public CorruptionBar healthBar;
     public ManaBar manaBar;
     Vector2 move;
 
     private void Start()
     {
-        healthBar.SetMaxHealth(health);
+        healthBar.SetMinCorruption(100 - health);
         manaBar.SetMaxMana(mana);
     }
 
@@ -55,7 +55,7 @@ public class movement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        healthBar.SetHealth(health);
+        healthBar.SetCorruption(100 - health);
         if (health <= 0)
         {
             Die();
