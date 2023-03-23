@@ -5,9 +5,27 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
+    
+    /* reverse health bar system suggested where this value would start at 0
+     * and tick upwards. The enemy would die when the value becomes high enough
+     * (so basically, the reverse of the current implementation)
+     */
     public int health = 100;
     public int damage = 15;
+    public int burnStacks = 0;
+    float timer = 0f;
     // public GameObject death;
+
+    void Update() {
+        if (burnStacks == 0) return; // if the enemy is not burned
+
+        if (timer <= 0.5f) {
+            timer += Time.deltaTime;
+        } else {
+            timer = 0;
+            TakeDamage(burnStacks*15); // the enemy will take 15 damage every 0.5 seconds
+        } // if
+    } // Update
 
     public void TakeDamage(int damage)
     {
