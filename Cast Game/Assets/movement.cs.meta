@@ -3,7 +3,13 @@ guid: 1375cd800d2e5af4d83f34882ec8b42a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rbody: {instanceID: 0}
+  - anim: {instanceID: 0}
+  - healthBar: {instanceID: 0}
+  - manaBar: {instanceID: 0}
+  - firePoint: {instanceID: 0}
+  - enemyToReplaceWithWhenCorrupted: {fileID: 2695097318276484364, guid: 50b7c72d145fe364095bc475714ef09d, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

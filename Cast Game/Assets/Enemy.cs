@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
             timer += Time.deltaTime;
         } else {
             timer = 0;
-            TakeDamage(burnStacks*Bullet.burnDamage); // the enemy will take 15 damage every 0.5 seconds
+            TakeDamage(burnStacks*Bullet.burnDamage); 
         } // if
     } // Update
 

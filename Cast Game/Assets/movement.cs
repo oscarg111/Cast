@@ -15,6 +15,7 @@ public class movement : MonoBehaviour
     public CorruptionBar healthBar;
     public ManaBar manaBar;
     public GameObject firePoint;
+    public GameObject enemyToReplaceWithWhenCorrupted;
     Vector2 move;
 
     private void Start()
@@ -86,9 +87,15 @@ public class movement : MonoBehaviour
         healthBar.SetCorruption(100 - health);
         if (health <= 0)
         {
-            Die();
+            Corrupt();
         }
     }
+
+    public void Corrupt() {
+        Instantiate(enemyToReplaceWithWhenCorrupted, transform.position, transform.rotation);
+        Die();
+    }
+
     private void Die()
     {
         Destroy(gameObject);

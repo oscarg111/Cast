@@ -3766,6 +3766,7 @@ MonoBehaviour:
   healthBar: {fileID: 207970603}
   manaBar: {fileID: 1576343634}
   firePoint: {fileID: 1997173662}
+  enemyToReplaceWithWhenCorrupted: {fileID: 1638455814}
 --- !u!50 &1628932163
 Rigidbody2D:
   serializedVersion: 4
@@ -3889,6 +3890,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1997173663}
   bulletPrefab: {fileID: 5665222721183121305, guid: d9f94ed334257c34ba3ce4d0150409db, type: 3}
+--- !u!1 &1638455814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2593867776018508911, guid: 50b7c72d145fe364095bc475714ef09d, type: 3}
+  m_PrefabInstance: {fileID: 1738806981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1722308439 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2695097318276484364, guid: 50b7c72d145fe364095bc475714ef09d, type: 3}
@@ -3934,6 +3940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 15
+  burnStacks: 0
 --- !u!1001 &1738806981
 PrefabInstance:
   m_ObjectHideFlags: 0

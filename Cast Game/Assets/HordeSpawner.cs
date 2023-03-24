@@ -18,6 +18,8 @@ public class HordeSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ObjectToSpawnAround == null) this.enabled = false;
+
         if (timer <= 5f){
             timer += Time.deltaTime;
         } 
