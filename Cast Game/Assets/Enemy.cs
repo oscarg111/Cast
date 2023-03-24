@@ -14,16 +14,17 @@ public class Enemy : MonoBehaviour
     public int damage = 15;
     public int burnStacks = 0;
     float timer = 0f;
+    // public float burnTickRate = 0.5f;
     // public GameObject death;
 
     void Update() {
         if (burnStacks == 0) return; // if the enemy is not burned
 
-        if (timer <= 0.5f) {
+        if (timer <= Bullet.burnTickRate) {
             timer += Time.deltaTime;
         } else {
             timer = 0;
-            TakeDamage(burnStacks*15); // the enemy will take 15 damage every 0.5 seconds
+            TakeDamage(burnStacks*Bullet.burnDamage); // the enemy will take 15 damage every 0.5 seconds
         } // if
     } // Update
 
