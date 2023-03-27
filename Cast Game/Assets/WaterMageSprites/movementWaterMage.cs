@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movement : MonoBehaviour
+public class movementWaterMage : MonoBehaviour
 {
 
     public float speed = 5f;
@@ -14,7 +14,7 @@ public class movement : MonoBehaviour
     public int health = 100;
     public CorruptionBar healthBar;
     public ManaBar manaBar;
-    public GameObject firePoint;
+    public GameObject waterPoint;
     public GameObject enemyToReplaceWithWhenCorrupted;
     Vector2 move;
 
@@ -28,47 +28,47 @@ public class movement : MonoBehaviour
     void Update()
     {
         // input
-        move.x = Input.GetAxisRaw("Horizontal");
-        move.y = Input.GetAxisRaw("Vertical");
+        move.x = Input.GetAxisRaw("Horizontal1");
+        move.y = Input.GetAxisRaw("Vertical1");
 
         // adjust animator parameters
         // will uncomment when have actual animations, for now, will set the rotation as 
         // the movement
         anim.SetFloat("Horizontal", move.x);
         anim.SetFloat("Vertical", move.y);
-        anim.SetFloat("speed", move.sqrMagnitude);
-        
+        anim.SetFloat("Speed", move.sqrMagnitude);
+
         if (move != Vector2.zero)
         {
             float angle = Mathf.Atan2(move.y, move.x) * Mathf.Rad2Deg;
             if (angle == 0 || angle == 90 || angle == 180 || angle == -90)
             {
-                firePoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                waterPoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 if (angle == 0)
                 {
-                    firePoint.transform.position = new Vector2(transform.position.x + 2, transform.position.y - .5f);
+                    waterPoint.transform.position = new Vector2(transform.position.x + 2, transform.position.y - .5f);
 
                 }
                 if (angle == 90)
                 {
-                    firePoint.transform.position = new Vector2(transform.position.x + 1.5f, transform.position.y + .5f);
+                    waterPoint.transform.position = new Vector2(transform.position.x + 1.5f, transform.position.y + .5f);
                 }
                 if (angle == 180)
                 {
-                    firePoint.transform.position = new Vector2(transform.position.x - 2, transform.position.y - .5f);
+                    waterPoint.transform.position = new Vector2(transform.position.x - 2, transform.position.y - .5f);
 
                 }
                 if (angle == -90)
                 {
-                    firePoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
+                    waterPoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
 
                 }
-            } 
+            }
         }
         else
         {
-            firePoint.transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
-            firePoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
+            waterPoint.transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
+            waterPoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
         }
         if (move.x == 0 && move.y == 0 && mana <= 1000)
         {
@@ -91,7 +91,8 @@ public class movement : MonoBehaviour
         }
     }
 
-    public void Corrupt() {
+    public void Corrupt()
+    {
         Instantiate(enemyToReplaceWithWhenCorrupted, transform.position, transform.rotation);
         Die();
     }

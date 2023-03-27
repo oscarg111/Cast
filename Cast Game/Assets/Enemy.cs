@@ -46,9 +46,14 @@ public class Enemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
         movement player = hitInfo.GetComponent<movement>();
+        movementWaterMage waterMage = hitInfo.GetComponent<movementWaterMage>();
         if (player != null)
         {
             player.TakeDamage(damage);
+        }
+        if(waterMage != null)
+        {
+            waterMage.TakeDamage(damage);
         }
         
     }
