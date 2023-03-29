@@ -17,6 +17,14 @@ public class ChaseAI : MonoBehaviour
     }
 
     // Update is called once per frame
+    /*
+     Get the distance from the enemy to fire or water
+    check to see which one is closer
+    if water closer 
+        move to them 
+    else
+        move to fire
+     */
     void Update()
     {
         if (player == null) this.enabled = false;
