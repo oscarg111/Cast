@@ -17,6 +17,14 @@ public class Enemy : MonoBehaviour
     // public float burnTickRate = 0.5f;
     // public GameObject death;
 
+    /** audio */
+    public AudioSource enemyAudioSource;
+    public AudioClip burn;
+
+    void Start() {
+        enemyAudioSource = GetComponent<AudioSource>(); 
+    }
+
     void Update() {
         if (burnStacks == 0) return; // if the enemy is not burned
 
@@ -24,6 +32,7 @@ public class Enemy : MonoBehaviour
             timer += Time.deltaTime;
         } else {
             timer = 0;
+            enemyAudioSource.PlayOneShot(burn);
             TakeDamage(burnStacks*Bullet.burnDamage); 
         } // if
     } // Update

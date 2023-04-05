@@ -4,22 +4,31 @@ using UnityEngine;
 
 public class weapon : MonoBehaviour
 {
-
+    public AudioSource noMana;
     public Transform firePoint;
     public GameObject bulletPrefab;
+
+    void Start() {
+        noMana = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         movement player = gameObject.GetComponent<movement>();
-        if (Input.GetButtonDown("Fire1") && player.mana > 0)
+        if (Input.GetButtonDown("Fire1"))
         {
 
-            //movement play = player.GetComponent<movement>;
+            if (player.mana > 0) {
+                //movement play = player.GetComponent<movement>;
             
-            player.mana -= 100;
+                player.mana -= 100;
               
-            Shoot();
+                Shoot();
+            } else {
+                noMana.Play();
+            }
+            
         }
     }
 
