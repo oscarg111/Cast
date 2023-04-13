@@ -101,4 +101,20 @@ public class movement : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("ManaUp"))
+        { 
+            Destroy(col.gameObject);
+            if (mana + 500 > 1000)
+            {
+                mana = 1000;
+            }
+            else
+            {
+                mana += 500;
+            }
+            
+        }
+    }
 }

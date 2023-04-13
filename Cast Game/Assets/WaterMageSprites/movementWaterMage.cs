@@ -101,4 +101,13 @@ public class movementWaterMage : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("ManaUp"))
+        {
+            Destroy(col.gameObject);
+            mana += 500;
+        }
+    }
 }
