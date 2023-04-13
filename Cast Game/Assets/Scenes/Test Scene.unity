@@ -6431,9 +6431,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1628932160}
     - target: {fileID: 9217083945966922769, guid: 50b7c72d145fe364095bc475714ef09d, type: 3}
+      propertyPath: fireMage
+      value: 
+      objectReference: {fileID: 1628932160}
+    - target: {fileID: 9217083945966922769, guid: 50b7c72d145fe364095bc475714ef09d, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9217083945966922769, guid: 50b7c72d145fe364095bc475714ef09d, type: 3}
+      propertyPath: waterMage
+      value: 
+      objectReference: {fileID: 1175663626}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50b7c72d145fe364095bc475714ef09d, type: 3}
 --- !u!1 &1754139592
