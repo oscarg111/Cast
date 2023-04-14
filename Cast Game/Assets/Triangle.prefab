@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a413b979e3b6404c8f0c1625b1c33a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6890171417896752708, guid: 86ae7de409eb54f619fb1328e4d42480, type: 3}
+  fireMage: {fileID: 0}
+  waterMage: {fileID: 0}
   speed: 1
-  chase_distance: 6
+  chase_distance: 1
