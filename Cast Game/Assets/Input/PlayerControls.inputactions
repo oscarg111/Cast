@@ -28,7 +28,7 @@
                 {
                     "name": "",
                     "id": "fbc6240f-54e1-488a-901e-b8b0267f6860",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",

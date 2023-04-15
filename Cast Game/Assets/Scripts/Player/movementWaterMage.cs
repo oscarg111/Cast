@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class movementWaterMage : MonoBehaviour
 {
@@ -17,7 +18,10 @@ public class movementWaterMage : MonoBehaviour
     public GameObject waterPoint;
     public GameObject enemyToReplaceWithWhenCorrupted;
     Vector2 move;
-
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        move = context.ReadValue<Vector2>();
+    }
     private void Start()
     {
         healthBar.SetMinCorruption(100 - health);
@@ -27,9 +31,6 @@ public class movementWaterMage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // input
-        move.x = Input.GetAxisRaw("Horizontal1");
-        move.y = Input.GetAxisRaw("Vertical1");
 
         // adjust animator parameters
         // will uncomment when have actual animations, for now, will set the rotation as 

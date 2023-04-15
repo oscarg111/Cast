@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class movement : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class movement : MonoBehaviour
     public GameObject enemyToReplaceWithWhenCorrupted;
     Vector2 move;
 
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        move = context.ReadValue<Vector2>();
+    }
+
     private void Start()
     {
         healthBar.SetMinCorruption(100 - health);
@@ -27,9 +33,6 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // input
-        move.x = Input.GetAxisRaw("Horizontal");
-        move.y = Input.GetAxisRaw("Vertical");
 
         // adjust animator parameters
         // will uncomment when have actual animations, for now, will set the rotation as 
