@@ -91,6 +91,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 18a687f1-2e5d-4aee-84a5-4ec7e212077b
     m_ActionName: Player/Fire[/Mouse/leftButton,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fd762dcd-90b7-404a-9a1e-766819ea108b
+    m_ActionName: Player/Controller Aiming[/XInputControllerWindows/rightStick,/XInputControllerWindows1/rightStick]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -109,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fired: 0
+  chosen: 0
 --- !u!212 &3360956159083277775
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -152,7 +157,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.3, y: 0.3}

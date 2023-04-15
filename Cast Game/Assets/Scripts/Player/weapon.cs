@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class weapon : MonoBehaviour
 {
     public AudioSource noMana;
     public Transform firePoint;
     public GameObject bulletPrefab;
+    private bool fired = false;
+    public float shotCooldown = .25f;
+    private float shotCooldownTimer = 0;
+
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        fired = context.action.triggered;
+    }
 
     void Start() {
         noMana = GetComponent<AudioSource>();
@@ -16,19 +25,28 @@ public class weapon : MonoBehaviour
     void Update()
     {
         movement player = gameObject.GetComponent<movement>();
-        if (Input.GetButtonDown("Fire1"))
+        if (fired)
         {
+            if(shotCooldownTimer <= 0)
+            {
+                if (player.mana > 0)
+                {
+                    //movement play = player.GetComponent<movement>;
 
-            if (player.mana > 0) {
-                //movement play = player.GetComponent<movement>;
-            
-                player.mana -= 100;
-              
-                Shoot();
-            } else {
-                noMana.Play();
+                    player.mana -= 100;
+                    Shoot();
+                    shotCooldownTimer = shotCooldown;
+                }
+                else
+                {
+                    noMana.Play();
+                }
             }
             
+        }
+        if(shotCooldownTimer > 0)
+        {
+            shotCooldownTimer -= Time.deltaTime;
         }
     }
 

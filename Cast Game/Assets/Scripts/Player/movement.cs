@@ -17,11 +17,18 @@ public class movement : MonoBehaviour
     public ManaBar manaBar;
     public GameObject firePoint;
     public GameObject enemyToReplaceWithWhenCorrupted;
+    public GameObject aimingArrow;
     Vector2 move;
+    Vector2 aim;
 
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
+    }
+
+    public void OnAim(InputAction.CallbackContext context)
+    {
+        aim = context.ReadValue<Vector2>();
     }
 
     private void Start()
@@ -41,10 +48,33 @@ public class movement : MonoBehaviour
         anim.SetFloat("Vertical", move.y);
         anim.SetFloat("speed", move.sqrMagnitude);
         
+        if(GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
+        {
+            aimingArrow.GetComponent<SpriteRenderer>().enabled = false;
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 dir = (Vector2)(worldPosition - firePoint.transform.position);
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            firePoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+        else
+        {
+            if(aim.magnitude >= .05f)
+            {
+                aimingArrow.GetComponent<SpriteRenderer>().enabled = true;
+                Vector2 worldPosition = (Vector2)firePoint.transform.position + aim;
+                Vector2 dir = (Vector2)(worldPosition - (Vector2)firePoint.transform.position);
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                firePoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
+            else
+            {
+                aimingArrow.GetComponent<SpriteRenderer>().enabled = false;
+            }
+        }
         if (move != Vector2.zero)
         {
-            float angle = Mathf.Atan2(move.y, move.x) * Mathf.Rad2Deg;
-            if (angle == 0 || angle == 90 || angle == 180 || angle == -90)
+            
+            /*if (angle == 0 || angle == 90 || angle == 180 || angle == -90)
             {
                 firePoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 if (angle == 0)
@@ -66,7 +96,7 @@ public class movement : MonoBehaviour
                     firePoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
 
                 }
-            } 
+            } */
         }
         
         else

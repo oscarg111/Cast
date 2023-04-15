@@ -15,6 +15,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Controller Aiming",
+                    "type": "PassThrough",
+                    "id": "fd762dcd-90b7-404a-9a1e-766819ea108b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Fire",
                     "type": "Button",
                     "id": "18a687f1-2e5d-4aee-84a5-4ec7e212077b",
@@ -110,6 +119,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "30eba0ca-f984-4d69-8f63-07cfaf863a26",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Controller Aiming",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
