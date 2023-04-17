@@ -9,7 +9,7 @@ public class weapon : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     private bool fired = false;
-    public float shotCooldown = .25f;
+    public float shotCooldown = .02f;
     private float shotCooldownTimer = 0;
 
     public void OnFire(InputAction.CallbackContext context)

@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb.velocity = transform.right * speed;
+        Destroy(gameObject, 1); //will destroy the bullet 5 seconds
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
@@ -22,7 +23,7 @@ public class Bullet : MonoBehaviour
         {
             enemy.TakeDamage(damage);
             enemy.burnStacks++;
-            // Destroy(gameObject);
+            Destroy(gameObject);
         }
         
     }
