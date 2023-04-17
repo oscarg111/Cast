@@ -3718,6 +3718,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 9221811442088391714, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
+      propertyPath: m_ChunkCullingBounds.x
+      value: 0.4375
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221811442088391714, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
+      propertyPath: m_ChunkCullingBounds.y
+      value: 0.4375
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -5765183769023986340, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
 --- !u!1 &1505241455
@@ -5707,10 +5715,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f15bf8ff84f7a4a8e630aad23d794c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRangeAroundPlayer: 4
-  maxRangeAroundPlayer: 5
+  minRangeAroundPlayer: 11
+  maxRangeAroundPlayer: 12
   ObjectToCreate: {fileID: 1722308439}
-  ObjectToSpawnAround: {fileID: 1628932160}
+  ObjectToSpawnAround: {fileID: 519420028}
 --- !u!4 &1937796355
 Transform:
   m_ObjectHideFlags: 0
