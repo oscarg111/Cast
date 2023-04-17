@@ -24,10 +24,14 @@ public class HordeSpawner : MonoBehaviour
             timer += Time.deltaTime;
         } 
         else {
-            timer = 0;
+            timer = 0f;
             Vector3 playerPosition = ObjectToSpawnAround.transform.position;
-            playerPosition.x += Random.Range(minRangeAroundPlayer,maxRangeAroundPlayer);
-            playerPosition.y += Random.Range(minRangeAroundPlayer,maxRangeAroundPlayer);
+            int xDimension = Random.Range(0,2);
+            if (xDimension == 0) xDimension--;
+            int yDimension = Random.Range(0,2);
+            if (yDimension == 0) yDimension--;
+            playerPosition.x += Random.Range(minRangeAroundPlayer,maxRangeAroundPlayer) * xDimension;
+            playerPosition.y += Random.Range(minRangeAroundPlayer,maxRangeAroundPlayer) * yDimension;
             Instantiate(ObjectToCreate,playerPosition,ObjectToCreate.transform.rotation);
         }
     }
