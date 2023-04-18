@@ -6,8 +6,8 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
     public int damage = 10;
-    public static float burnTickRate = 0.5f; // # of seconds between each tick
-    public static int burnDamage = 15; // damage per tick
+    public static float burnTickRate = 1.5f; // # of seconds between each tick
+    public static int burnDamage = 5; // damage per tick
     public Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()

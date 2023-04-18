@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
      * and tick upwards. The enemy would die when the value becomes high enough
      * (so basically, the reverse of the current implementation)
      */
-    public int health = 100;
+    public int health = 500;
     public int damage = 15;
     public int burnStacks = 0;
     float timer = 0f;

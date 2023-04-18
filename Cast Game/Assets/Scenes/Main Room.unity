@@ -2116,12 +2116,12 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000334738e4
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 0
+  m_OverlapOperation: 1
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
@@ -4601,7 +4601,7 @@ MonoBehaviour:
   noMana: {fileID: 0}
   firePoint: {fileID: 1997173663}
   bulletPrefab: {fileID: 5665222721183121305, guid: d9f94ed334257c34ba3ce4d0150409db, type: 3}
-  shotCooldown: 0.15
+  shotCooldown: 0.05
 --- !u!82 &1628932168
 AudioSource:
   m_ObjectHideFlags: 0
