@@ -25,7 +25,7 @@ public class HordeSpawner : MonoBehaviour
         } 
         else {
             timer = 0f;
-            Vector3 playerPosition = ObjectToSpawnAround.transform.position;
+            Vector3 playerPosition = ObjectToSpawnAround.transform.position + new Vector3(0, 0, 10);
             int xDimension = Random.Range(0,2);
             if (xDimension == 0) xDimension--;
             int yDimension = Random.Range(0,2);

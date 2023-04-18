@@ -37,6 +37,7 @@ public class ControlManager : MonoBehaviour
         {
             GameObject.Find("FireMage").GetComponent<PlayerInput>().SwitchCurrentControlScheme(fireCType, fireCDevice);
             GameObject.Find("WaterMage").GetComponent<PlayerInput>().SwitchCurrentControlScheme(waterCType, waterCDevice);
+            Destroy(gameObject);
         }
     }
 }

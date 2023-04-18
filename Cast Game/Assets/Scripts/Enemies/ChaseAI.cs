@@ -8,6 +8,7 @@ public class ChaseAI : MonoBehaviour
     public GameObject waterMage;
     public float speed;
     public float chase_distance;
+    public float accel = 1;
 
     // this gets the distance between the player and enemy
     private float fireDistance;
@@ -51,7 +52,8 @@ public class ChaseAI : MonoBehaviour
             Vector2 direction = closer.transform.position - transform.position;
             direction.Normalize();
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.position = Vector2.MoveTowards(this.transform.position, closer.transform.position, speed * Time.deltaTime);
+            GetComponent<Rigidbody2D>().velocity = Vector2.MoveTowards(GetComponent<Rigidbody2D>().velocity, (Vector2)(closer.transform.position - transform.position).normalized * speed, accel*Time.fixedDeltaTime);
+            //transform.position = Vector2.MoveTowards(this.transform.position, closer.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
     }
@@ -66,7 +68,8 @@ public class ChaseAI : MonoBehaviour
         // Only allows for chase if the player is close enough
         if(distance < chase_distance)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+            GetComponent<Rigidbody2D>().velocity = Vector2.MoveTowards(GetComponent<Rigidbody2D>().velocity, (Vector2)(player.transform.position - transform.position).normalized * speed, accel * Time.fixedDeltaTime);
+            //transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
     }

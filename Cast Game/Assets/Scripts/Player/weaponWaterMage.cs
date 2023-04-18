@@ -25,7 +25,7 @@ public class weaponWaterMage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement player = gameObject.GetComponent<movement>();
+        movementWaterMage player = gameObject.GetComponent<movementWaterMage>();
         if (fired)
         {
             if (shotCooldownTimer <= 0)
@@ -34,7 +34,7 @@ public class weaponWaterMage : MonoBehaviour
                 {
                     //movement play = player.GetComponent<movement>;
 
-                    player.mana -= 100;
+                    player.mana -= 30;
                     Shoot();
                     shotCooldownTimer = shotCooldown;
                 }

@@ -24,6 +24,12 @@ public class movementWaterMage : MonoBehaviour
     {
         move = context.ReadValue<Vector2>();
     }
+
+    public void OnAim(InputAction.CallbackContext context)
+    {
+        aim = context.ReadValue<Vector2>();
+    }
+
     private void Start()
     {
         healthBar.SetMinCorruption(100 - health);
