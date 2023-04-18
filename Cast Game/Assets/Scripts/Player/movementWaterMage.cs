@@ -17,6 +17,8 @@ public class movementWaterMage : MonoBehaviour
     public ManaBar manaBar;
     public GameObject waterPoint;
     public GameObject enemyToReplaceWithWhenCorrupted;
+    public GameObject aimingArrow;
+    Vector2 aim;
     Vector2 move;
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -39,7 +41,30 @@ public class movementWaterMage : MonoBehaviour
         anim.SetFloat("Vertical", move.y);
         anim.SetFloat("Speed", move.sqrMagnitude);
 
-        if (move != Vector2.zero)
+        if (GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
+        {
+            aimingArrow.GetComponent<SpriteRenderer>().enabled = false;
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 dir = (Vector2)(worldPosition - waterPoint.transform.position);
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            waterPoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+        else
+        {
+            if (aim.magnitude >= .05f)
+            {
+                aimingArrow.GetComponent<SpriteRenderer>().enabled = true;
+                Vector2 worldPosition = (Vector2)waterPoint.transform.position + aim;
+                Vector2 dir = (Vector2)(worldPosition - (Vector2)waterPoint.transform.position);
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                waterPoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
+            else
+            {
+                aimingArrow.GetComponent<SpriteRenderer>().enabled = false;
+            }
+        }
+     /*   if (move != Vector2.zero)
         {
             float angle = Mathf.Atan2(move.y, move.x) * Mathf.Rad2Deg;
             if (angle == 0 || angle == 90 || angle == 180 || angle == -90)
@@ -70,7 +95,7 @@ public class movementWaterMage : MonoBehaviour
         {
             waterPoint.transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
             waterPoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
-        }
+        }*/
         if (move.x == 0 && move.y == 0 && mana <= 1000)
         {
             mana += 1;
