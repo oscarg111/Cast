@@ -139,3 +139,4 @@ MonoBehaviour:
   speed: 25
   rb: {fileID: 4921451130979354902}
   spread: 4
+  decelRate: 28

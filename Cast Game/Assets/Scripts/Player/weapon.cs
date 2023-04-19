@@ -100,7 +100,7 @@ public class weapon : MonoBehaviour
     void Shoot()
     {
         // shooting logic
-        noMana.PlayOneShot(firePrimary);
+        //noMana.PlayOneShot(firePrimary);
         Instantiate(fireSpreadPrefab, firePoint.position, firePoint.rotation);
     }
     void ShootFireBall()
