@@ -250,9 +250,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 16
-  damage: 20
+  damage: 50
   rb: {fileID: 5133360421967447181}
-  spread: 0
+  spread: 0.3
 --- !u!95 &569406488150176809
 Animator:
   serializedVersion: 4

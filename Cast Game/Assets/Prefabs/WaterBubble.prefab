@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6505562617009111850}
   - component: {fileID: 2030818377604711831}
   m_Layer: 4
-  m_Name: WaterShot
+  m_Name: WaterBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4820,7 +4820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   acceleration: 1.2
-  mana: 1000
+  mana: 500
   rbody: {fileID: 1175663631}
   anim: {fileID: 1175663628}
   health: 100
@@ -6313,7 +6313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   acceleration: 1.2
-  mana: 1000
+  mana: 500
   rbody: {fileID: 1628932163}
   anim: {fileID: 1628932166}
   health: 100
@@ -6810,7 +6810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df4ebfc8f7370d4685990151339174c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 300
   damage: 15
   burnStacks: 0
   enemyAudioSource: {fileID: 0}
