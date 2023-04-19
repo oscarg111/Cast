@@ -188,6 +188,7 @@ MonoBehaviour:
   waterMage: {fileID: 0}
   speed: 3
   chase_distance: 25
+  accel: 1
 --- !u!50 &-1894150436674617395
 Rigidbody2D:
   serializedVersion: 4
@@ -200,7 +201,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 500
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
