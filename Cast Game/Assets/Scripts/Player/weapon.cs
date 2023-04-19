@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class weapon : MonoBehaviour
 {
+    public bool withinFire = false;
+    public float fireCooldownMultiplier;
+    public float fireSizeMultiplier;
     public AudioSource noMana;
     public Transform firePoint;
     public GameObject fireSpreadPrefab;
@@ -15,6 +18,7 @@ public class weapon : MonoBehaviour
     public float fireBallCooldown;
     private float flameThrowerCooldownTimer = 0;
     private float fireBallCooldownTimer = 0;
+    private float currentFireBallCooldown;
 
     public void OnFire(InputAction.CallbackContext context)
     {
@@ -67,7 +71,7 @@ public class weapon : MonoBehaviour
 
                     player.mana -= 3;
                     ShootFireBall();
-                    fireBallCooldownTimer = fireBallCooldown;
+                    fireBallCooldownTimer = currentFireBallCooldown;
                 }
                 else
                 {
@@ -80,6 +84,14 @@ public class weapon : MonoBehaviour
         {
             fireBallCooldownTimer -= Time.deltaTime;
         }
+        if(withinFire)
+        {
+            currentFireBallCooldown = fireBallCooldown / fireCooldownMultiplier;
+        }
+        else
+        {
+            currentFireBallCooldown = fireBallCooldown;
+        }
     }
 
     void Shoot()
@@ -90,6 +102,10 @@ public class weapon : MonoBehaviour
     void ShootFireBall()
     {
         // shooting logic
-        Instantiate(fireBallPrefab, firePoint.position, firePoint.rotation);
+        GameObject fireBall = Instantiate(fireBallPrefab, firePoint.position, firePoint.rotation);
+        if(withinFire)
+        {
+            fireBall.transform.localScale = (Vector2)fireBall.transform.localScale * fireSizeMultiplier;
+        }
     }
 }

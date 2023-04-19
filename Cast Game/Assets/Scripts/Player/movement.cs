@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class movement : MonoBehaviour
 {
-
     public float speed = 5f;
+    public float acceleration = 3f;
     public int mana = 1000;
     public Rigidbody2D rbody;
     public Animator anim;
@@ -17,7 +17,9 @@ public class movement : MonoBehaviour
     public ManaBar manaBar;
     public GameObject firePoint;
     public GameObject enemyToReplaceWithWhenCorrupted;
-    public GameObject aimingArrow;
+    public GameObject aimingArrow; 
+    public bool withinFire = false;
+    public int fireManaMultiplier;
     Vector2 move;
     Vector2 aim;
 
@@ -106,14 +108,21 @@ public class movement : MonoBehaviour
         }
         if (move.x == 0 && move.y == 0 && mana <= 1000)
         {
-            mana += 1;
+            if (withinFire)
+            {
+                mana += fireManaMultiplier;
+            }
+            else
+            {
+                mana += 1;
+            }
         }
         manaBar.SetMana(mana);
     }
     private void FixedUpdate()
     {
         // movement
-        rbody.velocity = move * speed;
+        rbody.velocity = Vector2.MoveTowards(rbody.velocity, move * speed, acceleration);
     }
     public void TakeDamage(int damage)
     {

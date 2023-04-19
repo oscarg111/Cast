@@ -7,6 +7,7 @@ public class movementWaterMage : MonoBehaviour
 {
 
     public float speed = 5f;
+    public float acceleration = 3f;
     public int mana = 1000;
     public Rigidbody2D rbody;
     public Animator anim;
@@ -18,6 +19,8 @@ public class movementWaterMage : MonoBehaviour
     public GameObject waterPoint;
     public GameObject enemyToReplaceWithWhenCorrupted;
     public GameObject aimingArrow;
+    public bool withinWell;
+    public int wellManaMultiplier;
     Vector2 aim;
     Vector2 move;
     public void OnMove(InputAction.CallbackContext context)
@@ -104,14 +107,21 @@ public class movementWaterMage : MonoBehaviour
         }*/
         if (move.x == 0 && move.y == 0 && mana <= 1000)
         {
-            mana += 1;
+            if(withinWell)
+            {
+                mana += wellManaMultiplier;
+            }
+            else
+            {
+                mana += 1;
+            }
         }
         manaBar.SetMana(mana);
     }
     private void FixedUpdate()
     {
         // movement
-        rbody.velocity = move * speed;
+        rbody.velocity = Vector2.MoveTowards(rbody.velocity, move * speed, acceleration);
     }
     public void TakeDamage(int damage)
     {

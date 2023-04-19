@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         float Rand = Random.Range(.9f, 1.1f);
         transform.localScale = new Vector3(transform.localScale.x * Rand, transform.localScale.y * Rand, transform.localScale.z);
         transform.Rotate(new Vector3(0, 0, Random.Range(-spread, spread)));
-        rb.velocity = (Vector2)transform.right * speed + (Vector2)GameObject.Find("FireMage").GetComponent<Rigidbody2D>().velocity;
+        rb.velocity = (Vector2)transform.right * speed + (Vector2)GameObject.Find("FireMage").GetComponent<Rigidbody2D>().velocity * .5f;
         Destroy(gameObject, 1); //will destroy the bullet 5 seconds
     }
 

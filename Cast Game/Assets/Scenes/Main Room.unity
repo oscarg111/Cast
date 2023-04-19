@@ -2983,7 +2983,7 @@ MonoBehaviour:
   waterMage: {fileID: 1175663626}
   minHeight: 8
   maxHeight: 20
-  paddingPercent: 0.5
+  paddingPercent: 0.7
   cameraAccelRate: 4
 --- !u!114 &519420034
 MonoBehaviour:
@@ -4819,6 +4819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  acceleration: 1.2
   mana: 1000
   rbody: {fileID: 1175663631}
   anim: {fileID: 1175663628}
@@ -4828,6 +4829,8 @@ MonoBehaviour:
   waterPoint: {fileID: 1133298227}
   enemyToReplaceWithWhenCorrupted: {fileID: 1638455814}
   aimingArrow: {fileID: 942961677}
+  withinWell: 0
+  wellManaMultiplier: 2
 --- !u!114 &1175663635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4840,12 +4843,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cafb72e2671c40479bfcc27d8b2fcca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  withinWell: 0
   noMana: {fileID: 0}
   waterPoint: {fileID: 1133298228}
   bulletPrefab: {fileID: 1988558737948183089, guid: 26296838788c0e44586db1ed732ecb08, type: 3}
   shotCooldown: 0.02
   secondarySpeedMultiplier: 3
   secondarySpreadMultiplier: 4
+  wellSpreadMultiplier: 2
+  wellCooldownMultiplier: 3
 --- !u!82 &1175663636
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6306,6 +6312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  acceleration: 1.2
   mana: 1000
   rbody: {fileID: 1628932163}
   anim: {fileID: 1628932166}
@@ -6315,6 +6322,8 @@ MonoBehaviour:
   firePoint: {fileID: 1997173662}
   enemyToReplaceWithWhenCorrupted: {fileID: 1638455814}
   aimingArrow: {fileID: 613998965}
+  withinFire: 0
+  fireManaMultiplier: 3
 --- !u!50 &1628932163
 Rigidbody2D:
   serializedVersion: 4
@@ -6438,6 +6447,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d522f0e0f7dafdc4594c9d2cb584424a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  withinFire: 0
+  fireCooldownMultiplier: 3
+  fireSizeMultiplier: 2
   noMana: {fileID: 0}
   firePoint: {fileID: 1997173663}
   fireSpreadPrefab: {fileID: 5665222721183121305, guid: d9f94ed334257c34ba3ce4d0150409db, type: 3}

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class weaponWaterMage : MonoBehaviour
 {
+    public bool withinWell = false;
     public AudioSource noMana;
     public Transform waterPoint;
     public GameObject bulletPrefab;
@@ -13,8 +14,11 @@ public class weaponWaterMage : MonoBehaviour
     public float shotCooldown = .02f;
     public int secondarySpeedMultiplier;
     public float secondarySpreadMultiplier;
+    public float wellSpreadMultiplier;
+    public float wellCooldownMultiplier;
     private int currentMultiplier;
     private float shotCooldownTimer = 0;
+    private float currentCooldown;
 
     public void OnFire(InputAction.CallbackContext context)
     {
@@ -47,7 +51,7 @@ public class weaponWaterMage : MonoBehaviour
 
                         player.mana -= 3;
                         Shoot();
-                        shotCooldownTimer = shotCooldown;
+                        shotCooldownTimer = currentCooldown;
                     }
                     else
                     {
@@ -70,6 +74,14 @@ public class weaponWaterMage : MonoBehaviour
         {
             currentMultiplier = 1;
         }
+        if(withinWell)
+        {
+            currentCooldown = shotCooldown / wellCooldownMultiplier;
+        }
+        else
+        {
+            currentCooldown = shotCooldown;
+        }
 
     }
 
@@ -80,6 +92,10 @@ public class weaponWaterMage : MonoBehaviour
         if(secondary)
         {
             currentBullet.GetComponent<WaterBullet>().spread *= secondarySpreadMultiplier;
+        }
+        if(withinWell)
+        {
+            currentBullet.GetComponent<WaterBullet>().spread *= wellSpreadMultiplier;
         }
     }
 }
