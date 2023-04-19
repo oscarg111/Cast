@@ -8,7 +8,6 @@ public class weapon : MonoBehaviour
     public bool withinFire = false;
     public float fireCooldownMultiplier;
     public float fireSizeMultiplier;
-    public AudioSource noMana;
     public Transform firePoint;
     public GameObject fireSpreadPrefab;
     public GameObject fireBallPrefab;
@@ -19,6 +18,10 @@ public class weapon : MonoBehaviour
     private float flameThrowerCooldownTimer = 0;
     private float fireBallCooldownTimer = 0;
     private float currentFireBallCooldown;
+
+    /** audio */
+    public AudioSource noMana;
+    public AudioClip firePrimary;
 
     public void OnFire(InputAction.CallbackContext context)
     {
@@ -97,6 +100,7 @@ public class weapon : MonoBehaviour
     void Shoot()
     {
         // shooting logic
+        noMana.PlayOneShot(firePrimary);
         Instantiate(fireSpreadPrefab, firePoint.position, firePoint.rotation);
     }
     void ShootFireBall()

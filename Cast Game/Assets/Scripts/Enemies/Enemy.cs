@@ -19,7 +19,9 @@ public class Enemy : MonoBehaviour
 
     /** audio */
     public AudioSource enemyAudioSource;
+    public AudioSource playerAudioSource;
     public AudioClip burn;
+    public AudioClip die;
 
     void Start() {
         enemyAudioSource = GetComponent<AudioSource>(); 
@@ -49,6 +51,7 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         // Instantiate(death, transform.position, Quaternion.identity);
+        playerAudioSource.PlayOneShot(die,0.1f);
         Destroy(gameObject);
     }
 
@@ -66,6 +69,5 @@ public class Enemy : MonoBehaviour
         }
         
     }
-
 
 }
