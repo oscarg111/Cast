@@ -9,12 +9,21 @@ public class weaponWaterMage : MonoBehaviour
     public Transform waterPoint;
     public GameObject bulletPrefab;
     private bool fired = false;
+    private bool secondary = false;
     public float shotCooldown = .02f;
+    public int secondarySpeedMultiplier;
+    public float secondarySpreadMultiplier;
+    private int currentMultiplier;
     private float shotCooldownTimer = 0;
 
     public void OnFire(InputAction.CallbackContext context)
     {
         fired = context.action.triggered;
+    }
+
+    public void OnSecondary(InputAction.CallbackContext context)
+    {
+        secondary = context.action.triggered;
     }
 
     void Start()
@@ -30,17 +39,20 @@ public class weaponWaterMage : MonoBehaviour
         {
             if (shotCooldownTimer <= 0)
             {
-                if (player.mana > 0)
+                for(int i = 0; i < currentMultiplier; i++)
                 {
-                    //movement play = player.GetComponent<movement>;
+                    if (player.mana > 0)
+                    {
+                        //movement play = player.GetComponent<movement>;
 
-                    player.mana -= 30;
-                    Shoot();
-                    shotCooldownTimer = shotCooldown;
-                }
-                else
-                {
-                    noMana.Play();
+                        player.mana -= 3;
+                        Shoot();
+                        shotCooldownTimer = shotCooldown;
+                    }
+                    else
+                    {
+                        noMana.Play();
+                    }
                 }
             }
 
@@ -49,11 +61,25 @@ public class weaponWaterMage : MonoBehaviour
         {
             shotCooldownTimer -= Time.deltaTime;
         }
+
+        if(secondary)
+        {
+            currentMultiplier = secondarySpeedMultiplier;
+        }
+        else
+        {
+            currentMultiplier = 1;
+        }
+
     }
 
     void Shoot()
     {
         // shooting logic
-        Instantiate(bulletPrefab, waterPoint.position, waterPoint.rotation);
+        GameObject currentBullet = Instantiate(bulletPrefab, waterPoint.position, waterPoint.rotation);
+        if(secondary)
+        {
+            currentBullet.GetComponent<WaterBullet>().spread *= secondarySpreadMultiplier;
+        }
     }
 }

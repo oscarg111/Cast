@@ -7,14 +7,23 @@ public class weapon : MonoBehaviour
 {
     public AudioSource noMana;
     public Transform firePoint;
-    public GameObject bulletPrefab;
+    public GameObject fireSpreadPrefab;
+    public GameObject fireBallPrefab;
     private bool fired = false;
-    public float shotCooldown = .02f;
-    private float shotCooldownTimer = 0;
+    private bool secondary = false;
+    public float flameThrowerCooldown = .02f;
+    public float fireBallCooldown;
+    private float flameThrowerCooldownTimer = 0;
+    private float fireBallCooldownTimer = 0;
 
     public void OnFire(InputAction.CallbackContext context)
     {
         fired = context.action.triggered;
+    }
+
+    public void OnSecondary(InputAction.CallbackContext context)
+    {
+        secondary = context.action.triggered;
     }
 
     void Start() {
@@ -27,15 +36,15 @@ public class weapon : MonoBehaviour
         movement player = gameObject.GetComponent<movement>();
         if (fired)
         {
-            if(shotCooldownTimer <= 0)
+            if(flameThrowerCooldownTimer <= 0)
             {
                 if (player.mana > 0)
                 {
                     //movement play = player.GetComponent<movement>;
 
-                    player.mana -= 100;
+                    player.mana -= 3;
                     Shoot();
-                    shotCooldownTimer = shotCooldown;
+                    flameThrowerCooldownTimer = flameThrowerCooldown;
                 }
                 else
                 {
@@ -44,15 +53,43 @@ public class weapon : MonoBehaviour
             }
             
         }
-        if(shotCooldownTimer > 0)
+        if(flameThrowerCooldownTimer > 0)
         {
-            shotCooldownTimer -= Time.deltaTime;
+            flameThrowerCooldownTimer -= Time.deltaTime;
+        }
+        if (secondary)
+        {
+            if (fireBallCooldownTimer <= 0)
+            {
+                if (player.mana > 0)
+                {
+                    //movement play = player.GetComponent<movement>;
+
+                    player.mana -= 3;
+                    ShootFireBall();
+                    fireBallCooldownTimer = fireBallCooldown;
+                }
+                else
+                {
+                    noMana.Play();
+                }
+            }
+
+        }
+        if (fireBallCooldownTimer > 0)
+        {
+            fireBallCooldownTimer -= Time.deltaTime;
         }
     }
 
     void Shoot()
     {
         // shooting logic
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Instantiate(fireSpreadPrefab, firePoint.position, firePoint.rotation);
+    }
+    void ShootFireBall()
+    {
+        // shooting logic
+        Instantiate(fireBallPrefab, firePoint.position, firePoint.rotation);
     }
 }

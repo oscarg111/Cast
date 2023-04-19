@@ -113,7 +113,7 @@ public class movement : MonoBehaviour
     private void FixedUpdate()
     {
         // movement
-        rbody.MovePosition(rbody.position + move * speed * Time.fixedDeltaTime);
+        rbody.velocity = move * speed;
     }
     public void TakeDamage(int damage)
     {

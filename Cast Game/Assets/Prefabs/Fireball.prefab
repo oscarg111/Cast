@@ -251,3 +251,4 @@ MonoBehaviour:
   speed: 16
   damage: 20
   rb: {fileID: 5133360421967447181}
+  spread: 0
