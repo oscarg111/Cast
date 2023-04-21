@@ -7,7 +7,7 @@ public class movement : MonoBehaviour
 {
     public float speed = 5f;
     public float acceleration = 3f;
-    public int mana = 1000;
+    public int mana = 500;
     public Rigidbody2D rbody;
     public Animator anim;
     private bool left;
@@ -35,7 +35,7 @@ public class movement : MonoBehaviour
 
     private void Start()
     {
-        healthBar.SetMinCorruption(100 - health);
+        healthBar.SetMaxCorruption(health);
         manaBar.SetMaxMana(mana);
     }
 
@@ -106,7 +106,7 @@ public class movement : MonoBehaviour
             //firePoint.transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
             //firePoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
         }
-        if (move.x == 0 && move.y == 0 && mana <= 1000)
+        if (move.x == 0 && move.y == 0 && mana <= 500)
         {
             if (withinFire)
             {
@@ -116,6 +116,10 @@ public class movement : MonoBehaviour
             {
                 mana += 1;
             }
+        }
+        if (mana > 500)
+        {
+            mana = 500;
         }
         manaBar.SetMana(mana);
     }
@@ -130,6 +134,7 @@ public class movement : MonoBehaviour
         healthBar.SetCorruption(100 - health);
         if (health <= 0)
         {
+            healthBar.SetCorruption(0);
             Corrupt();
         }
     }

@@ -35,7 +35,7 @@ public class movementWaterMage : MonoBehaviour
 
     private void Start()
     {
-        healthBar.SetMinCorruption(100 - health);
+        healthBar.SetMaxCorruption(health);
         manaBar.SetMaxMana(mana);
     }
 
@@ -105,7 +105,7 @@ public class movementWaterMage : MonoBehaviour
             waterPoint.transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
             waterPoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
         }*/
-        if (move.x == 0 && move.y == 0 && mana <= 1000)
+        if (move.x == 0 && move.y == 0 && mana <= 500)
         {
             if(withinWell)
             {
@@ -115,6 +115,10 @@ public class movementWaterMage : MonoBehaviour
             {
                 mana += 1;
             }
+        }
+        if(mana > 500)
+        {
+            mana = 500;
         }
         manaBar.SetMana(mana);
     }
@@ -129,6 +133,7 @@ public class movementWaterMage : MonoBehaviour
         healthBar.SetCorruption(100 - health);
         if (health <= 0)
         {
+            healthBar.SetCorruption(0);
             Corrupt();
         }
     }
