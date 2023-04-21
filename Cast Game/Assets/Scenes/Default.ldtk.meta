@@ -21,9 +21,15 @@ ScriptedImporter:
   _intGridValues:
   - _key: Collision_1
     _asset: {fileID: 11400000, guid: 3c90dae62f332aa409ada21003d13c0f, type: 2}
-  - _key: Floor_Auto_Dirt_1
+  - _key: Collision_2
+    _asset: {fileID: 11400000, guid: 76e04ec0cabc26b49a75f61f9b7f7e14, type: 2}
+  - _key: Floor_Auto_Dirt_Streets_1
     _asset: {fileID: 11400000, guid: d4271d23ea7c8a543998e99ba67e6faf, type: 2}
-  - _key: Floor_Auto_Dirt_2
+  - _key: Floor_Auto_Dirt_Streets_2
+    _asset: {fileID: 11400000, guid: d4271d23ea7c8a543998e99ba67e6faf, type: 2}
+  - _key: Floor_Auto_Dirt_Streets_3
+    _asset: {fileID: 11400000, guid: d4271d23ea7c8a543998e99ba67e6faf, type: 2}
+  - _key: Floor_Auto_Dirt_Streets_4
     _asset: {fileID: 11400000, guid: d4271d23ea7c8a543998e99ba67e6faf, type: 2}
   _entities:
   - _key: Entity

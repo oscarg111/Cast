@@ -1319,6 +1319,25 @@
 			"customData": [],
 			"savedSelections": [],
 			"cachedPixelData": { "opaqueTiles": "1010", "averageColors": "f99ab99af8890000" }
+		},
+		{
+			"__cWid": 1,
+			"__cHei": 1,
+			"identifier": "Grass_2",
+			"uid": 62,
+			"relPath": "../../../../../../Pictures/Cast/Grass_2.png",
+			"embedAtlas": null,
+			"pxWid": 32,
+			"pxHei": 32,
+			"tileGridSize": 32,
+			"spacing": 0,
+			"padding": 0,
+			"tags": ["Floor"],
+			"tagsSourceEnumUid": null,
+			"enumTags": [],
+			"customData": [],
+			"savedSelections": [],
+			"cachedPixelData": { "opaqueTiles": "1", "averageColors": "f7b6" }
 		}
 	], "enums": [], "externalEnums": [], "levelFields": [] },
 	"levels": [
@@ -1359,7 +1378,7 @@
 					"layerDefUid": 45,
 					"pxOffsetX": 0,
 					"pxOffsetY": 0,
-					"visible": false,
+					"visible": true,
 					"optionalRules": [],
 					"intGridCsv": [
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

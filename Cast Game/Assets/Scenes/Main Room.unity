@@ -336,7 +336,7 @@ PrefabInstance:
     - target: {fileID: -8449976930207339609, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_Collider
       value: 
-      objectReference: {fileID: 1321217450}
+      objectReference: {fileID: 0}
     - target: {fileID: -8449976930207339609, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.size
       value: 24
@@ -913,6 +913,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Default
       objectReference: {fileID: 0}
+    - target: {fileID: -3017565864843755094, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3011640272776944343, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
       propertyPath: m_ChunkCullingBounds.x
       value: 0
@@ -1001,6 +1005,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -498605520494762257, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2045541877753330089, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
@@ -1012,7 +1020,7 @@ PrefabInstance:
     - target: {fileID: 2045541877753330089, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_Collider
       value: 
-      objectReference: {fileID: 244576958}
+      objectReference: {fileID: 0}
     - target: {fileID: 2045541877753330089, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.size
       value: 16
@@ -2845,11 +2853,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!19719996 &244576958 stripped
-TilemapCollider2D:
-  m_CorrespondingSourceObject: {fileID: -2353198835593588691, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
-  m_PrefabInstance: {fileID: 128335823}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &480592120
 GameObject:
   m_ObjectHideFlags: 0
@@ -6190,11 +6193,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!19719996 &1321217450 stripped
-TilemapCollider2D:
-  m_CorrespondingSourceObject: {fileID: -4780328151990910665, guid: d4d7b67d985a82c41ab9cf65b5d5f6ce, type: 3}
-  m_PrefabInstance: {fileID: 128335823}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1384479455
 GameObject:
   m_ObjectHideFlags: 0
@@ -8575,7 +8573,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053252547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -106.0074, y: 15.8708, z: 0}
+  m_LocalPosition: {x: -361, y: 15.8708, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
