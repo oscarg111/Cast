@@ -130,12 +130,12 @@ public class movementWaterMage : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        healthBar.SetCorruption(100 - health);
         if (health <= 0)
         {
             healthBar.SetCorruption(0);
             Corrupt();
         }
+        healthBar.SetCorruption(100 - health);
     }
 
     public void Corrupt()

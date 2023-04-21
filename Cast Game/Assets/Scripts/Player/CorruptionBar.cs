@@ -11,6 +11,8 @@ public class CorruptionBar : MonoBehaviour
     public GameObject child;
     private RectTransform trans;
     private float maxCorr;
+    private float currentHealth;
+    private float goalHealth;
 
     public void SetMaxCorruption(int corruption)
     {
@@ -29,10 +31,23 @@ public class CorruptionBar : MonoBehaviour
     }
     public void SetCorruption(int corruption)
     {
-        child.GetComponent<RectTransform>().SetParent(trans.parent, true);
-        trans.localScale = new Vector2((1 - ((float)corruption / maxCorr)) * 1.26f, (1 - ((float)corruption / maxCorr)) * 1.26f);
-        child.GetComponent<RectTransform>().SetParent(trans, true);
+        if (corruption > 100)
+        {
+            corruption = 100;
+        }
+        goalHealth = corruption;
         //slider.value = corruption;
         //fill.color = gradient.Evaluate(slider.normalizedValue);
+    }
+
+    private void FixedUpdate()
+    {
+        if(currentHealth != goalHealth)
+        {
+            child.GetComponent<RectTransform>().SetParent(trans.parent, true);
+            currentHealth = Mathf.Lerp(currentHealth, goalHealth, Time.fixedDeltaTime * 5);
+            trans.localScale = new Vector2((1 - ((float)currentHealth / maxCorr)) * 1.26f, (1 - ((float)currentHealth / maxCorr)) * 1.26f);
+            child.GetComponent<RectTransform>().SetParent(trans, true);
+        }
     }
 }
