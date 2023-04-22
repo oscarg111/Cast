@@ -19902,7 +19902,7 @@ MonoBehaviour:
   noMana: {fileID: 0}
   waterPoint: {fileID: 1133298228}
   bulletPrefab: {fileID: 1988558737948183089, guid: 26296838788c0e44586db1ed732ecb08, type: 3}
-  shotCooldown: 0.02
+  shotCooldown: 0.035
   secondarySpeedMultiplier: 3
   secondarySpreadMultiplier: 4
   wellSpreadMultiplier: 2
@@ -21614,7 +21614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628932160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.52, y: -0.62, z: 0}
+  m_LocalPosition: {x: 6.62, y: 0.95, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21656,7 +21656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d522f0e0f7dafdc4594c9d2cb584424a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  withinFire: 1
+  withinFire: 0
   fireCooldownMultiplier: 3
   fireSizeMultiplier: 2
   firePoint: {fileID: 1997173663}
@@ -22725,7 +22725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectToCreate: {fileID: 1722308439}
   ObjectToSpawnAround: {fileID: 519420028}
-  normalCooldown: 2
+  normalCooldown: 3
   spawnArea:
     serializedVersion: 2
     m_Bits: 512
