@@ -8,6 +8,7 @@ public class WaterBullet : MonoBehaviour
     public Rigidbody2D rb;
     public float spread;
     public float decelRate;
+    public GameObject steam;
     private SpriteRenderer sprender;
     private bool fadeIn = true;
     // Start is called before the first frame update
@@ -64,4 +65,13 @@ public class WaterBullet : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Fire")
+        {
+            Destroy(collision.gameObject);
+            Instantiate(steam, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
 }

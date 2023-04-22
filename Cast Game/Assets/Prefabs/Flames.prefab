@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 99905751}
   - component: {fileID: 99905752}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,9 +125,9 @@ GameObject:
   - component: {fileID: 4911733616711703166}
   - component: {fileID: -8718945898865423283}
   - component: {fileID: -6752592116590391614}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flames
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

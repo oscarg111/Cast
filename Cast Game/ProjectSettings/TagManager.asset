@@ -7,6 +7,7 @@ TagManager:
   - ManaUp
   - FireMage
   - WaterMage
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Placeholder Borders
   - Camera Borders
   - Spawn Area
-  - 
+  - Fire
   - 
   - 
   - 
