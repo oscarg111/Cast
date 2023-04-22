@@ -18,6 +18,9 @@ namespace DialogueSystem
         [SerializeField] private float delay;
         [SerializeField] private float delayBetweenLines;
 
+        [Header("Sound")]
+        [SerializeField] private AudioClip sound;
+
         [Header("Character Image")]
         [SerializeField] private Sprite characterSprite;
         [SerializeField] private Image imageHolder;
@@ -32,7 +35,7 @@ namespace DialogueSystem
 
         private void Start()
         {
-            StartCoroutine(WriteText(input,textHolder,textColor,textFont, delay, delayBetweenLines));
+            StartCoroutine(WriteText(input,textHolder,textColor,textFont, delay, delayBetweenLines, sound));
         }
 
     }

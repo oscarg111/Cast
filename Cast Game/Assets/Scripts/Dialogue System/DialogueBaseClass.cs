@@ -10,7 +10,7 @@ namespace DialogueSystem
     
         public bool finished {get; private set;}
 
-        public IEnumerator WriteText(string input, Text textHolder, Color textColor, Font textFont, float delay, float delayBetweenLines)
+        public IEnumerator WriteText(string input, Text textHolder, Color textColor, Font textFont, float delay, float delayBetweenLines, AudioClip sound)
         {
             textHolder.color = textColor;
             textHolder.font = textFont;
@@ -18,7 +18,7 @@ namespace DialogueSystem
             for(int i = 0; i < input.Length; i++)
                 {
                     textHolder.text += input[i];
-                    //place letter sounds if we have it
+                DialogueSoundManager.instance.PlaySound(sound);
                     yield return new WaitForSeconds(delay);
                 }
 

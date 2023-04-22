@@ -3030,10 +3030,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireMage: {fileID: 1628932160}
   waterMage: {fileID: 1175663626}
-  minHeight: 8
-  maxHeight: 20
-  paddingPercent: 0.7
-  cameraAccelRate: 4
+  minHeight: 10
+  maxHeight: 16
+  paddingPercent: 1.2
+  cameraAccelRate: 3
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
