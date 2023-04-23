@@ -20,8 +20,8 @@ public class weapon : MonoBehaviour
     private float currentFireBallCooldown;
 
     /** audio */
-    public AudioSource noMana;
-    public AudioClip firePrimary;
+    public AudioSource flamethrower;
+    public AudioClip noMana;
 
     public void OnFire(InputAction.CallbackContext context)
     {
@@ -34,7 +34,7 @@ public class weapon : MonoBehaviour
     }
 
     void Start() {
-        noMana = GetComponent<AudioSource>();
+        flamethrower.Pause();
     }
 
     // Update is called once per frame
@@ -49,22 +49,20 @@ public class weapon : MonoBehaviour
                 {
                     //movement play = player.GetComponent<movement>;
 
+                    if (!flamethrower.isPlaying) flamethrower.Play();
                     player.mana -= 3;
                     Shoot();
                     flameThrowerCooldownTimer = flameThrowerCooldown;
                 }
                 else
                 {
-                    noMana.Play();
+                    flamethrower.Pause();
+                    flamethrower.PlayOneShot(noMana);
                 }
-            }
+            } else flamethrower.Pause();
             
-        }
-        if(flameThrowerCooldownTimer > 0)
-        {
-            flameThrowerCooldownTimer -= Time.deltaTime;
-        }
-        if (secondary)
+        } 
+        else if (secondary)
         {
             if (fireBallCooldownTimer <= 0)
             {
@@ -72,17 +70,25 @@ public class weapon : MonoBehaviour
                 {
                     //movement play = player.GetComponent<movement>;
 
+                    if (!flamethrower.isPlaying) flamethrower.Play();
                     player.mana -= 3;
                     ShootFireBall();
                     fireBallCooldownTimer = currentFireBallCooldown;
                 }
                 else
                 {
-                    noMana.Play();
+                    flamethrower.Pause();
+                    flamethrower.PlayOneShot(noMana);
                 }
-            }
+            } else flamethrower.Pause();
 
+        } else flamethrower.Pause();
+
+        if(flameThrowerCooldownTimer > 0)
+        {
+            flameThrowerCooldownTimer -= Time.deltaTime;
         }
+        
         if (fireBallCooldownTimer > 0)
         {
             fireBallCooldownTimer -= Time.deltaTime;

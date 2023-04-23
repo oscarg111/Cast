@@ -1,0 +1,86 @@
+Using pre-set license
+Built from '2021.3/staging' branch; Version is '2021.3.14f1 (eee1884e7226) revision 15655304'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Core' Language: 'en' Physical Memory: 16264 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 2021.3.14f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+C:/Users/zakim/Documents/GitHub/Cast/Cast Game
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+58910
+Successfully changed project path to: C:/Users/zakim/Documents/GitHub/Cast/Cast Game
+C:/Users/zakim/Documents/GitHub/Cast/Cast Game
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+received signal from system: SIGSEGV
+Crash!!!
+Obtained 23 stack frames
+0x00007ff605bbacbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff605bc1999 (Unity) StackWalker::ShowCallstack
+0x00007ff606b288a3 (Unity) GetStacktrace
+0x00007ff605bc09d6 (Unity) winutils::PrintStackTrace
+0x00007ff605bba2ec (Unity) winutils::CrashHandler::DefaultSignalHandler
+0x00007ff607f2ad1e (Unity) seh_filter_exe
+0x00007ff607feaddc (Unity) `__scrt_common_main_seh'::`1'::filt$0
+0x00007ff607ef7650 (Unity) _C_specific_handler
+0x00007ffd5e9d23df (ntdll) _chkstk
+0x00007ffd5e9814a4 (ntdll) RtlRaiseException
+0x00007ffd5e9d0f0e (ntdll) KiUserExceptionDispatcher
+0x00007ff605434d0a (Unity) DynamicHeapAllocator::InitializeMemoryRegion
+0x00007ff60542fc60 (Unity) DynamicHeapAllocator::CreateTLSFBlock
+0x00007ff60542eb0b (Unity) DynamicHeapAllocator::Allocate
+0x00007ff60543c544 (Unity) DualThreadAllocator<DynamicHeapAllocator>::Allocate
+0x00007ff60542f1e5 (Unity) MemoryManager::Allocate
+0x00007ff60542e43d (Unity) operator new
+0x00007ff60544267b (Unity) TLSAllocator<0>::ThreadInitialize
+0x00007ff6066d0c53 (Unity) Application::InitializeProject
+0x00007ff606b32ff8 (Unity) WinMain
+0x00007ff607ed4fbe (Unity) __scrt_common_main_seh
+0x00007ffd5e287604 (KERNEL32) BaseThreadInitThunk
+0x00007ffd5e9826a1 (ntdll) RtlUserThreadStart
+
+SymInit: Symbol-SearchPath: '.;C:\Users\zakim\Documents\GitHub\Cast\Cast Game;C:\Users\zakim\Documents\GitHub\Cast\Cast Game\Library\BurstCache\JIT;C:\Program Files\Unity 2021.3.14f1\Editor;C:\WINDOWS;C:\WINDOWS\system32;SRV*C:\websymbols*http://msdl.microsoft.com/download/symbols;', symOptions: 534, UserName: 'zakim'
+OS-Version: 10.0.0
+C:\Program Files\Unity 2021.3.14f1\Editor\Unity.exe:Unity.exe (00007FF604BB0000), size: 73654272 (result: 0), SymType: 'PDB', PDB: 'C:\Program Files\Unity 2021.3.14f1\Editor\Unity_x64.pdb', fileVersion: 2021.3.14.57736
+C:\WINDOWS\SYSTEM32\ntdll.dll:ntdll.dll (00007FFD5E930000), size: 2064384 (result: 0), SymType: '-exported-', PDB: 'C:\WINDOWS\SYSTEM32\ntdll.dll', fileVersion: 10.0.19041.2788
+C:\WINDOWS\System32\KERNEL32.DLL:KERNEL32.DLL (00007FFD5E270000), size: 782336 (result: 0), SymType: '-exported-', PDB: 'C:\WINDOWS\System32\KERNEL32.DLL', fileVersion: 10.0.19041.2788
+C:\WINDOWS\System32\KERNELBASE.dll:KERNELBASE.dll (00007FFD5C500000), size: 2990080 (result: 0), SymType: '-exported-', PDB: 'C:\WINDOWS\System32\KERNELBASE.dll', fileVersion: 10.0.19041.2788
+C:\WINDOWS\SYSTEM32\apphelp.dll:apphelp.dll (00007FFD59960000), size: 589824 (result: 0), SymType: '-exported-', PDB: 'C:\WINDOWS\SYSTEM32\apphelp.dll', fileVersion: 10.0.19041.2546
+C:\WINDOWS\System32\CRYPT32.dll:CRYPT32.dll (00007FFD5C3A0000), size: 1400832 (result: 0), SymType: '-exported-', PDB: 'C:\WINDOWS\System32\CRYPT32.dll', fileVersion: 10.0.19041.2486
+A crash has been intercepted by the crash handler. For call stack and other details, see the latest crash report generated in:
+ * C:/Users/zakim/AppData/Local/Temp/Unity/Editor/Crashes

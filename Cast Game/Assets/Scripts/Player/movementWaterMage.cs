@@ -24,14 +24,19 @@ public class movementWaterMage : MonoBehaviour
     public GameObject DialogueUI;
     Vector2 aim;
     Vector2 move;
+
+    /** audio */
+    public AudioSource waterAudioSource;
+
     public void OnMove(InputAction.CallbackContext context)
     {
         if (inDialogue())//Cutscene Dialogue Specifically
         {
             move = new Vector2(0, 0);
         }
-        else
+        else {
             move = context.ReadValue<Vector2>();
+        }
     }
 
     public void OnAim(InputAction.CallbackContext context)
@@ -41,6 +46,8 @@ public class movementWaterMage : MonoBehaviour
 
     private void Start()
     {
+        waterAudioSource = GetComponent<AudioSource>();
+        waterAudioSource.Pause();
         healthBar.SetMaxCorruption(health);
         manaBar.SetMaxMana(mana);
     }
@@ -127,6 +134,8 @@ public class movementWaterMage : MonoBehaviour
             mana = 500;
         }
         manaBar.SetMana(mana);
+        if (rbody.velocity.x == 0 && rbody.velocity.y == 0) waterAudioSource.Pause();
+        else if (!waterAudioSource.isPlaying && (rbody.velocity.x != 0f || rbody.velocity.y != 0f)) waterAudioSource.Play();
     }
     private void FixedUpdate()
     {

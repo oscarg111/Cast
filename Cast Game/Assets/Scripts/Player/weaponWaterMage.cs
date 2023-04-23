@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class weaponWaterMage : MonoBehaviour
 {
     public bool withinWell = false;
-    public AudioSource noMana;
     public Transform waterPoint;
     public GameObject bulletPrefab;
     private bool fired = false;
@@ -20,6 +19,11 @@ public class weaponWaterMage : MonoBehaviour
     private float shotCooldownTimer = 0;
     private float currentCooldown;
 
+    /** audio */
+    public AudioSource weaponAudio;
+    public AudioClip bubbles;
+    public AudioClip noMana;
+
     public void OnFire(InputAction.CallbackContext context)
     {
         fired = context.action.triggered;
@@ -32,7 +36,7 @@ public class weaponWaterMage : MonoBehaviour
 
     void Start()
     {
-        noMana = GetComponent<AudioSource>();
+        weaponAudio.Pause();
     }
 
     // Update is called once per frame
@@ -44,23 +48,25 @@ public class weaponWaterMage : MonoBehaviour
             if (shotCooldownTimer <= 0)
             {
                 for(int i = 0; i < currentMultiplier; i++)
-                {
+                {  
                     if (player.mana > 0)
                     {
                         //movement play = player.GetComponent<movement>;
 
+                        if (!weaponAudio.isPlaying) weaponAudio.Play();
                         player.mana -= 3;
                         Shoot();
                         shotCooldownTimer = currentCooldown;
                     }
                     else
                     {
-                        noMana.Play();
+                        weaponAudio.Pause();
+                        weaponAudio.PlayOneShot(noMana);
                     }
                 }
             }
 
-        }
+        } else weaponAudio.Pause();
         if (shotCooldownTimer > 0)
         {
             shotCooldownTimer -= Time.deltaTime;

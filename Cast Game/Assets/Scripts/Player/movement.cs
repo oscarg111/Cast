@@ -26,6 +26,9 @@ public class movement : MonoBehaviour
 
     private CutsceneDialogueController cutsceneTrigger;
 
+    /** audio */
+    public AudioSource fireAudioSource; // footstep
+
     public void OnMove(InputAction.CallbackContext context)
     {
 
@@ -33,8 +36,9 @@ public class movement : MonoBehaviour
         {
             move = new Vector2(0, 0);
         }
-        else 
+        else {
             move = context.ReadValue<Vector2>();
+        }
     }
 
     public void OnAim(InputAction.CallbackContext context)
@@ -44,6 +48,8 @@ public class movement : MonoBehaviour
 
     private void Start()
     {
+        fireAudioSource = GetComponent<AudioSource>();
+        fireAudioSource.Stop();
         healthBar.SetMaxCorruption(health);
         manaBar.SetMaxMana(mana);
     }
@@ -131,6 +137,8 @@ public class movement : MonoBehaviour
             mana = 500;
         }
         manaBar.SetMana(mana);
+        if (rbody.velocity.x == 0f && rbody.velocity.y == 0f) fireAudioSource.Stop();
+        else if (!fireAudioSource.isPlaying && (rbody.velocity.x != 0f || rbody.velocity.y != 0f)) fireAudioSource.Play();
     }
     private void FixedUpdate()
     {
