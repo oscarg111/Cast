@@ -23,6 +23,8 @@ public class movement : MonoBehaviour
     Vector2 move;
     Vector2 aim;
 
+    private CutsceneDialogueController cutsceneTrigger;
+
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
@@ -42,6 +44,11 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //if (inDialogue)//Cutscene Dialogue Specifically
+        //{
+            //movement lock and horde spawning pause go here
+        //}
 
         // adjust animator parameters
         // will uncomment when have actual animations, for now, will set the rotation as 
@@ -163,5 +170,29 @@ public class movement : MonoBehaviour
             }
             
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Interactable")
+        {
+            cutsceneTrigger = collision.gameObject.GetComponent<CutsceneDialogueController>();
+
+            if (Input.GetKey(KeyCode.E))//temp, switch input systems here
+                collision.gameObject.GetComponent<CutsceneDialogueController>().ActivateDialogue();
+        }
+    }
+
+    private bool inDialogue()
+    {
+        if (cutsceneTrigger != null)
+            return cutsceneTrigger.DialogueActive();
+        else
+            return false;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        cutsceneTrigger = null;
     }
 }

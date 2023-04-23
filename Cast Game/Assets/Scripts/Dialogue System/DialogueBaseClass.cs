@@ -8,9 +8,9 @@ namespace DialogueSystem
     public class DialogueBaseClass : MonoBehaviour
     {
     
-        public bool finished {get; private set;}
+        public bool finished {get; protected set;}
 
-        public IEnumerator WriteText(string input, Text textHolder, Color textColor, Font textFont, float delay, float delayBetweenLines, AudioClip sound)
+        protected IEnumerator WriteText(string input, Text textHolder, Color textColor, Font textFont, float delay, AudioClip sound, float delayBetweenLines)
         {
             textHolder.color = textColor;
             textHolder.font = textFont;

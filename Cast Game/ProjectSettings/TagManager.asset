@@ -8,6 +8,7 @@ TagManager:
   - FireMage
   - WaterMage
   - Fire
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Camera Borders
   - Spawn Area
   - Fire
-  - 
+  - Environmental Interactables
   - 
   - 
   - 
