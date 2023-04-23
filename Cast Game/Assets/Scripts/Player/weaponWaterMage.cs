@@ -60,13 +60,13 @@ public class weaponWaterMage : MonoBehaviour
                     }
                     else
                     {
-                        weaponAudio.Pause();
+                        weaponAudio.Stop();
                         weaponAudio.PlayOneShot(noMana);
                     }
                 }
             }
 
-        } else weaponAudio.Pause();
+        } else weaponAudio.Stop();
         if (shotCooldownTimer > 0)
         {
             shotCooldownTimer -= Time.deltaTime;

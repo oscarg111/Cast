@@ -56,10 +56,10 @@ public class weapon : MonoBehaviour
                 }
                 else
                 {
-                    flamethrower.Pause();
+                    flamethrower.Stop();
                     flamethrower.PlayOneShot(noMana);
                 }
-            } else flamethrower.Pause();
+            } // else flamethrower.Pause();
             
         } 
         else if (secondary)
@@ -77,12 +77,12 @@ public class weapon : MonoBehaviour
                 }
                 else
                 {
-                    flamethrower.Pause();
+                    flamethrower.Stop();
                     flamethrower.PlayOneShot(noMana);
                 }
-            } else flamethrower.Pause();
+            } // else flamethrower.Pause();
 
-        } else flamethrower.Pause();
+        } else flamethrower.Stop();
 
         if(flameThrowerCooldownTimer > 0)
         {
