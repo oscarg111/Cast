@@ -17225,7 +17225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190853137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.06, y: 64.62, z: 0}
+  m_LocalPosition: {x: -40.85, y: 66.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17770,7 +17770,7 @@ MonoBehaviour:
   input: I know, right?
   textColor: {r: 0.8490566, g: 0, b: 0, a: 1}
   textFont: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
-  delay: 1
+  delay: 0.1
   delayBetweenLines: 2
   sound: {fileID: 8300000, guid: 5d43959b028478b4aa09ff18d5093bde, type: 3}
   characterSprite: {fileID: 21300000, guid: 32be6a711e82f794c9407158aa025079, type: 3}
@@ -18989,7 +18989,7 @@ MonoBehaviour:
   input: Let's go.
   textColor: {r: 0.12979059, g: 0.059060108, b: 0.745283, a: 1}
   textFont: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
-  delay: 1
+  delay: 0.1
   delayBetweenLines: 2
   sound: {fileID: 8300000, guid: b843db5eb95d69f47a1da1b55daca1a2, type: 3}
   characterSprite: {fileID: 21300000, guid: f55f0ae01d85b2641840c83c74374379, type: 3}
@@ -20071,7 +20071,7 @@ MonoBehaviour:
   input: Wow, look at that.
   textColor: {r: 0.8490566, g: 0, b: 0, a: 1}
   textFont: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
-  delay: 1
+  delay: 0.1
   delayBetweenLines: 2
   sound: {fileID: 8300000, guid: 5d43959b028478b4aa09ff18d5093bde, type: 3}
   characterSprite: {fileID: 21300000, guid: 32be6a711e82f794c9407158aa025079, type: 3}
@@ -20386,7 +20386,7 @@ MonoBehaviour:
   input: It's beautiful!
   textColor: {r: 0.12979059, g: 0.059060108, b: 0.745283, a: 1}
   textFont: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
-  delay: 1
+  delay: 0.1
   delayBetweenLines: 2
   sound: {fileID: 8300000, guid: b843db5eb95d69f47a1da1b55daca1a2, type: 3}
   characterSprite: {fileID: 21300000, guid: f55f0ae01d85b2641840c83c74374379, type: 3}
