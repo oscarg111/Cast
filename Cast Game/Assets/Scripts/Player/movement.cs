@@ -20,6 +20,7 @@ public class movement : MonoBehaviour
     public GameObject aimingArrow; 
     public bool withinFire = false;
     public int fireManaMultiplier;
+    public GameObject DialogueUI;
     Vector2 move;
     Vector2 aim;
 
@@ -27,7 +28,13 @@ public class movement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        move = context.ReadValue<Vector2>();
+
+        if (inDialogue())//Cutscene Dialogue Specifically
+        {
+            move = new Vector2(0, 0);
+        }
+        else 
+            move = context.ReadValue<Vector2>();
     }
 
     public void OnAim(InputAction.CallbackContext context)
@@ -44,11 +51,6 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //if (inDialogue)//Cutscene Dialogue Specifically
-        //{
-            //movement lock and horde spawning pause go here
-        //}
 
         // adjust animator parameters
         // will uncomment when have actual animations, for now, will set the rotation as 
@@ -185,10 +187,7 @@ public class movement : MonoBehaviour
 
     private bool inDialogue()
     {
-        if (cutsceneTrigger != null)
-            return cutsceneTrigger.DialogueActive();
-        else
-            return false;
+        return !DialogueUI.GetComponent<DialogueSystem.DialogueHolder>().dialogueFinished;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

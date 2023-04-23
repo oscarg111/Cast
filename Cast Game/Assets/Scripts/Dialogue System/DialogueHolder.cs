@@ -7,7 +7,7 @@ namespace DialogueSystem
     {
 
         private IEnumerator dialogueSeq;
-        private bool dialogueFinished;
+        public bool dialogueFinished;
 
         private void OnEnable()
         {

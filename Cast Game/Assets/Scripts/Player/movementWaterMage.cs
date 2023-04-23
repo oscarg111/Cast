@@ -21,11 +21,17 @@ public class movementWaterMage : MonoBehaviour
     public GameObject aimingArrow;
     public bool withinWell;
     public int wellManaMultiplier;
+    public GameObject DialogueUI;
     Vector2 aim;
     Vector2 move;
     public void OnMove(InputAction.CallbackContext context)
     {
-        move = context.ReadValue<Vector2>();
+        if (inDialogue())//Cutscene Dialogue Specifically
+        {
+            move = new Vector2(0, 0);
+        }
+        else
+            move = context.ReadValue<Vector2>();
     }
 
     public void OnAim(InputAction.CallbackContext context)
@@ -147,6 +153,11 @@ public class movementWaterMage : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    private bool inDialogue()
+    {
+        return !DialogueUI.GetComponent<DialogueSystem.DialogueHolder>().dialogueFinished;
     }
 
     private void OnTriggerEnter2D(Collider2D col)

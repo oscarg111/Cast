@@ -43,7 +43,7 @@ namespace DialogueSystem
 
         private void Update()
         {
-            if(Input.GetMouseButtonDown(0)) //replace with proper input
+            if(transform.parent.parent.GetComponent<InputListener>().pressed) //replace with proper input
             {
                 if (textHolder.text != input)
                 {
