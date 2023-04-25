@@ -15,10 +15,13 @@ public class ChaseAI : MonoBehaviour
     private float waterDistance;
     private GameObject closer;
 
+    /** audio */
+    public AudioSource enemyAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemyAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -46,6 +49,7 @@ public class ChaseAI : MonoBehaviour
         // Only allows for chase if the player is close enough
         if(fireDistance < chase_distance || waterDistance < chase_distance)
         {
+            if (!enemyAudioSource.isPlaying) enemyAudioSource.Play();
             if (fireDistance <= waterDistance) closer = fireMage;
             else closer = waterMage;
             
@@ -55,7 +59,7 @@ public class ChaseAI : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector2.MoveTowards(GetComponent<Rigidbody2D>().velocity, (Vector2)(closer.transform.position - transform.position).normalized * speed, accel*Time.fixedDeltaTime);
             //transform.position = Vector2.MoveTowards(this.transform.position, closer.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-        }
+        } else enemyAudioSource.Pause();
     }
 
     void oneAlive(GameObject player) 
@@ -68,9 +72,10 @@ public class ChaseAI : MonoBehaviour
         // Only allows for chase if the player is close enough
         if(distance < chase_distance)
         {
+            if (!enemyAudioSource.isPlaying) enemyAudioSource.Play();
             GetComponent<Rigidbody2D>().velocity = Vector2.MoveTowards(GetComponent<Rigidbody2D>().velocity, (Vector2)(player.transform.position - transform.position).normalized * speed, accel * Time.fixedDeltaTime);
             //transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-        }
+        } else enemyAudioSource.Pause();
     }
 }

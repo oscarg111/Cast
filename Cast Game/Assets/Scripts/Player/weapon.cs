@@ -21,7 +21,7 @@ public class weapon : MonoBehaviour
 
     /** audio */
     public AudioSource flamethrower;
-    public AudioClip noMana;
+    public AudioSource noMana;
 
     public void OnFire(InputAction.CallbackContext context)
     {
@@ -57,7 +57,7 @@ public class weapon : MonoBehaviour
                 else
                 {
                     flamethrower.Stop();
-                    flamethrower.PlayOneShot(noMana);
+                    if (!noMana.isPlaying) noMana.Play();
                 }
             } // else flamethrower.Pause();
             
@@ -78,7 +78,7 @@ public class weapon : MonoBehaviour
                 else
                 {
                     flamethrower.Stop();
-                    flamethrower.PlayOneShot(noMana);
+                    if (!noMana.isPlaying) noMana.Play();
                 }
             } // else flamethrower.Pause();
 

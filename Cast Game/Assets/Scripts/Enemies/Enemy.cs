@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour
     /** audio */
     public AudioSource enemyAudioSource;
     public AudioSource playerAudioSource;
-    public AudioSource waterAudioSource;
     public AudioClip burn;
     public AudioClip die;
 
@@ -39,7 +38,6 @@ public class Enemy : MonoBehaviour
             TakeDamage(burnStacks*Bullet.burnDamage); 
         } // if
 
-        if (playerAudioSource == null) playerAudioSource = waterAudioSource;
     } // Update
 
     public void TakeDamage(int damage)
@@ -54,7 +52,7 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         // Instantiate(death, transform.position, Quaternion.identity);
-        playerAudioSource.PlayOneShot(die,0.1f);
+        playerAudioSource.PlayOneShot(die,0.15f);
         Destroy(gameObject);
     }
 
