@@ -22,7 +22,7 @@ public class weaponWaterMage : MonoBehaviour
     /** audio */
     public AudioSource weaponAudio;
     public AudioClip bubbles;
-    public AudioClip noMana;
+    public AudioSource noMana;
 
     public void OnFire(InputAction.CallbackContext context)
     {
@@ -61,7 +61,7 @@ public class weaponWaterMage : MonoBehaviour
                     else
                     {
                         weaponAudio.Stop();
-                        weaponAudio.PlayOneShot(noMana);
+                        if (!noMana.isPlaying) noMana.Play();
                     }
                 }
             }
