@@ -212,7 +212,15 @@ public class movementWaterMage : MonoBehaviour
         if (col.CompareTag("ManaUp"))
         {
             Destroy(col.gameObject);
-            mana += 500;
+
+            if (mana + 500 > 1000) 
+            {
+            mana = 1000;
+            }
+            else 
+            {
+                mana += 500;
+            }
         }
     }
 }
