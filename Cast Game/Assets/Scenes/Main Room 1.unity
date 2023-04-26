@@ -2973,6 +2973,7 @@ GameObject:
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3194,6 +3195,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e39de3b58956ae40a1c4d0a73d8d37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceOfAudio: {fileID: 0}
+  loop: {fileID: 8300000, guid: e20652f281504874a8796c79a987f3ba, type: 3}
+  timer: 56
 --- !u!1 &557002038
 GameObject:
   m_ObjectHideFlags: 0
@@ -80316,6 +80332,10 @@ MonoBehaviour:
   chargeLight: {fileID: 1796104105}
   invincibilityFrames: 1
   waterAudioSource: {fileID: 0}
+  footstep: {fileID: 8300000, guid: fa31fd54993029c4ca34570312d66846, type: 3}
+  manaRecharge: {fileID: 8300000, guid: 788266c85d9be454596ec0ab0713d1fa, type: 3}
+  corrupt: {fileID: 8300000, guid: 251d671d19e99b64c9d867c8be15b251, type: 3}
+  powerup: {fileID: 8300000, guid: 3338d25cf21f260478b45fad6ec6210c, type: 3}
 --- !u!114 &1175663635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82965,6 +82985,10 @@ MonoBehaviour:
   chargeLight: {fileID: 891347252}
   invincibilityFrames: 1
   fireAudioSource: {fileID: 1628932168}
+  footstep: {fileID: 8300000, guid: fa31fd54993029c4ca34570312d66846, type: 3}
+  manaRecharge: {fileID: 8300000, guid: 788266c85d9be454596ec0ab0713d1fa, type: 3}
+  corrupt: {fileID: 8300000, guid: 251d671d19e99b64c9d867c8be15b251, type: 3}
+  powerup: {fileID: 8300000, guid: 3338d25cf21f260478b45fad6ec6210c, type: 3}
 --- !u!50 &1628932163
 Rigidbody2D:
   serializedVersion: 4

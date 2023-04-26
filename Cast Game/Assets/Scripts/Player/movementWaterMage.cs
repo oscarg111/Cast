@@ -32,6 +32,10 @@ public class movementWaterMage : MonoBehaviour
 
     /** audio */
     public AudioSource waterAudioSource;
+    public AudioClip footstep;
+    public AudioClip manaRecharge;
+    public AudioClip corrupt;
+    public AudioClip powerup;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -70,8 +74,15 @@ public class movementWaterMage : MonoBehaviour
     {
         if (!PauseMenu.isPaused)
         {
-            if (!charging)
+            if (!charging) {
+                if (waterAudioSource.clip != footstep) {
+                    waterAudioSource.Stop();
+                    waterAudioSource.clip = footstep;
+                    waterAudioSource.volume = 0.1f;
+                    waterAudioSource.Play();
+                }
                 chargeLight.SetActive(false);
+            }
             if (inDialogue() || charging)//Cutscene Dialogue Specifically
             {
                 move = new Vector2(0, 0);
@@ -175,6 +186,12 @@ public class movementWaterMage : MonoBehaviour
         rbody.velocity = Vector2.MoveTowards(rbody.velocity, move * speed, acceleration);
         if (charging && mana <= 500)
         {
+            if (waterAudioSource.clip != manaRecharge) {
+                    waterAudioSource.Stop();
+                    waterAudioSource.clip = manaRecharge;
+                    waterAudioSource.volume = 1f;
+                    waterAudioSource.Play();
+            }
             if (withinWell)
             {
                 mana += wellManaMultiplier;
@@ -189,6 +206,7 @@ public class movementWaterMage : MonoBehaviour
     {
         if (!invincible)
         {
+            waterAudioSource.PlayOneShot(corrupt, 1f);
             invincible = true;
             health -= damage;
             StartCoroutine(TakeDamage());
@@ -222,6 +240,7 @@ public class movementWaterMage : MonoBehaviour
     {
         if (col.CompareTag("ManaUp"))
         {
+            waterAudioSource.PlayOneShot(powerup, 0.9f);
             Destroy(col.gameObject);
 
             if (mana + 500 > 1000) 

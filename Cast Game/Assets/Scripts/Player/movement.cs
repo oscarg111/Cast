@@ -33,6 +33,10 @@ public class movement : MonoBehaviour
 
     /** audio */
     public AudioSource fireAudioSource; // footstep
+    public AudioClip footstep;
+    public AudioClip manaRecharge;
+    public AudioClip corrupt;
+    public AudioClip powerup;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -70,8 +74,15 @@ public class movement : MonoBehaviour
     {
         if (!PauseMenu.isPaused)
         {
-            if (!charging)
+            if (!charging) {
                 chargeLight.SetActive(false);
+                if (fireAudioSource.clip != footstep) {
+                    fireAudioSource.Stop();
+                    fireAudioSource.clip = footstep;
+                    fireAudioSource.volume = 0.1f;
+                    fireAudioSource.Play();
+                }
+            }
             if (inDialogue() || charging)//Cutscene Dialogue Specifically
             {
                 move = new Vector2(0, 0);
@@ -166,7 +177,7 @@ public class movement : MonoBehaviour
                 mana = 500;
             }
             manaBar.SetMana(mana);
-            if (rbody.velocity.x == 0f && rbody.velocity.y == 0f) fireAudioSource.Stop();
+            if (rbody.velocity.x == 0f && rbody.velocity.y == 0f && fireAudioSource.clip == footstep) fireAudioSource.Stop();
             else if (!fireAudioSource.isPlaying && (rbody.velocity.x != 0f || rbody.velocity.y != 0f)) fireAudioSource.Play();
         }
     }
@@ -176,6 +187,12 @@ public class movement : MonoBehaviour
         rbody.velocity = Vector2.MoveTowards(rbody.velocity, move * speed, acceleration);
         if (charging && mana <= 500)
         {
+            if (fireAudioSource.clip != manaRecharge) {
+                    fireAudioSource.Stop();
+                    fireAudioSource.clip = manaRecharge;
+                    fireAudioSource.volume = 1f;
+                    fireAudioSource.Play();
+            }
             if (withinFire)
             {
                 mana += fireManaMultiplier;
@@ -190,6 +207,7 @@ public class movement : MonoBehaviour
     {
         if(!invincible)
         {
+            fireAudioSource.PlayOneShot(corrupt,1f);
             invincible = true;
             health -= damage;
             StartCoroutine(TakeDamage());
@@ -216,6 +234,7 @@ public class movement : MonoBehaviour
     {
         if (col.CompareTag("ManaUp"))
         { 
+            fireAudioSource.PlayOneShot(powerup, 0.9f);
             Destroy(col.gameObject);
             if (mana + 500 > 1000)
             {
