@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     public AudioSource playerAudioSource;
     public AudioClip burn;
     public AudioClip die;
+    private bool dying = false;
 
     void Start() {
         enemyAudioSource = GetComponent<AudioSource>(); 
@@ -51,10 +52,27 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        // Instantiate(death, transform.position, Quaternion.identity);
-        playerAudioSource.PlayOneShot(die,0.15f);
+        if(!dying)
+        {
+            enemyAudioSource.Stop();
+            dying = true;
+            // Instantiate(death, transform.position, Quaternion.identity);
+            enemyAudioSource.PlayOneShot(die);
+            StartCoroutine(DieCoroutine());
+        }
+    }
+
+    IEnumerator DieCoroutine()
+    {
+        GetComponent<ChaseAI>().enabled = false;
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        Destroy(transform.GetChild(0).gameObject);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
+
     private void OnCollisionStay2D(Collision2D hitInfo)
     {
         movement player = hitInfo.gameObject.GetComponent<movement>();
