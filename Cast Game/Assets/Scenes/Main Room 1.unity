@@ -1857,6 +1857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFinished: 0
+  hordeSpawn: {fileID: 1937796353}
 --- !u!114 &434898651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48057,6 +48058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFinished: 0
+  hordeSpawn: {fileID: 0}
 --- !u!114 &635745739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79836,6 +79838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFinished: 0
+  hordeSpawn: {fileID: 0}
 --- !u!114 &1500952209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81422,6 +81425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFinished: 0
+  hordeSpawn: {fileID: 0}
 --- !u!114 &1781152088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107621,7 +107625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1937796354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107636,10 +107640,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectToCreate: {fileID: 2733694096122091176, guid: c95964c1033d93648a47416ff76d0451, type: 3}
   ObjectToSpawnAround: {fileID: 519420028}
-  normalCooldown: 3
+  normalCooldown: 8
   spawnArea:
     serializedVersion: 2
     m_Bits: 512
+  currentWait: 0
 --- !u!4 &1937796355
 Transform:
   m_ObjectHideFlags: 0

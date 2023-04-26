@@ -25,7 +25,6 @@ public class movement : MonoBehaviour
     public GameObject chargeLight;
     public float invincibilityFrames;
     private bool invincible = false;
-    private int lastDir = 0;
     private weapon Weap;
     Vector2 move;
     Vector2 aim;

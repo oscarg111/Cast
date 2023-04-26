@@ -52,6 +52,10 @@ public class Bullet : MonoBehaviour
             enemy.burnStacks++;
             Destroy(gameObject);
         }
+        else if(hitInfo.gameObject.name == "Walls")
+        {
+            Destroy(gameObject);
+        }
         
     }
 

@@ -29,15 +29,25 @@ public class Enemy : MonoBehaviour
     }
 
     void Update() {
-        if (burnStacks == 0) return; // if the enemy is not burned
+        if (burnStacks != 0)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1, .5f, .5f, 1);
+            if (timer <= Bullet.burnTickRate)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                timer = 0;
+                enemyAudioSource.PlayOneShot(burn);
+                TakeDamage(burnStacks * Bullet.burnDamage);
+            } // if
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
 
-        if (timer <= Bullet.burnTickRate) {
-            timer += Time.deltaTime;
-        } else {
-            timer = 0;
-            enemyAudioSource.PlayOneShot(burn);
-            TakeDamage(burnStacks*Bullet.burnDamage); 
-        } // if
 
     } // Update
 
@@ -56,6 +66,7 @@ public class Enemy : MonoBehaviour
         {
             enemyAudioSource.Stop();
             dying = true;
+            GetComponent<ParticleSystem>().Play();
             // Instantiate(death, transform.position, Quaternion.identity);
             enemyAudioSource.PlayOneShot(die);
             StartCoroutine(DieCoroutine());

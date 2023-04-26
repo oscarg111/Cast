@@ -10,8 +10,10 @@ public class HordeSpawner : MonoBehaviour
     public GameObject ObjectToCreate;
     public GameObject ObjectToSpawnAround;
     public float normalCooldown;
+    private float modNormalCooldown;
     public LayerMask spawnArea;
-    private float currentWait;
+    private float timer = 0;
+    public float currentWait;
     private float missedCooldown = .01f;
     // Start is called before the first frame update
     void Start()
@@ -34,11 +36,11 @@ public class HordeSpawner : MonoBehaviour
             {
                 case 0:
                     //Right
-                    offset = (Vector2)ObjectToSpawnAround.transform.position + new Vector2(width / 2 + 2, Random.Range(-height / 2, height / 2));
+                    offset = (Vector2)ObjectToSpawnAround.transform.position + new Vector2(width / 2 + 4, Random.Range(-height / 2, height / 2));
                     if (Physics2D.OverlapCircle(offset, .1f, spawnArea) != null) 
                     {
                         Instantiate(ObjectToCreate, offset, transform.rotation);
-                        currentWait = normalCooldown;
+                        currentWait = modNormalCooldown;
                         //Debug.Log("Right hit " + offset);
                     }
                     else
@@ -49,11 +51,11 @@ public class HordeSpawner : MonoBehaviour
                     break;
                 case 1:
                     //Left
-                    offset = (Vector2)ObjectToSpawnAround.transform.position - new Vector2(width / 2 + 2, Random.Range(-height / 2, height / 2));
+                    offset = (Vector2)ObjectToSpawnAround.transform.position - new Vector2(width / 2 + 4, Random.Range(-height / 2, height / 2));
                     if (Physics2D.OverlapCircle(offset, .1f, spawnArea) != null)
                     {
                         Instantiate(ObjectToCreate, offset, transform.rotation);
-                        currentWait = normalCooldown;
+                        currentWait = modNormalCooldown;
                         //Debug.Log("Left hit " + offset);
                     }
                     else
@@ -64,11 +66,11 @@ public class HordeSpawner : MonoBehaviour
                     break;
                 case 2:
                     //Up
-                    offset = (Vector2)ObjectToSpawnAround.transform.position + new Vector2(Random.Range(-width / 2, width / 2), height / 2 + 2);
+                    offset = (Vector2)ObjectToSpawnAround.transform.position + new Vector2(Random.Range(-width / 2, width / 2), height / 2 + 4);
                     if (Physics2D.OverlapCircle(offset, .1f, spawnArea) != null)
                     {
                         Instantiate(ObjectToCreate, offset, transform.rotation);
-                        currentWait = normalCooldown;
+                        currentWait = modNormalCooldown;
                         //Debug.Log("Up hit " + offset);
                     }
                     else
@@ -79,11 +81,11 @@ public class HordeSpawner : MonoBehaviour
                     break;
                 case 3:
                     //Down
-                    offset = (Vector2)ObjectToSpawnAround.transform.position - new Vector2(Random.Range(-width / 2, width / 2), height / 2 + 2);
+                    offset = (Vector2)ObjectToSpawnAround.transform.position - new Vector2(Random.Range(-width / 2, width / 2), height / 2 + 4);
                     if (Physics2D.OverlapCircle(offset, .1f, spawnArea) != null)
                     {
                         Instantiate(ObjectToCreate, offset, transform.rotation);
-                        currentWait = normalCooldown;
+                        currentWait = modNormalCooldown;
                         //Debug.Log("Down hit " + offset);
                     }
                     else
@@ -115,5 +117,7 @@ public class HordeSpawner : MonoBehaviour
             playerPosition.y += Random.Range(minRangeAroundPlayer,maxRangeAroundPlayer) * yDimension;
             Instantiate(ObjectToCreate,playerPosition,ObjectToCreate.transform.rotation);
         }*/
+        timer += Time.deltaTime;
+        modNormalCooldown = normalCooldown - Mathf.Atan(.01f * timer);
     }
 }

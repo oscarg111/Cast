@@ -8,6 +8,7 @@ namespace DialogueSystem
 
         private IEnumerator dialogueSeq;
         public bool dialogueFinished;
+        public GameObject hordeSpawn;
 
         private void OnEnable()
         {
@@ -49,6 +50,10 @@ namespace DialogueSystem
             }
 
             dialogueFinished = true;
+            if (hordeSpawn != null)
+            {
+                hordeSpawn.SetActive(true);
+            }
             gameObject.SetActive(false);
             
         }
