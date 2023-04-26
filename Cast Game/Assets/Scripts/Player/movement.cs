@@ -21,6 +21,10 @@ public class movement : MonoBehaviour
     public bool withinFire = false;
     public int fireManaMultiplier;
     public GameObject DialogueUI;
+    public bool charging = false;
+    public GameObject chargeLight;
+    private int lastDir = 0;
+    private weapon Weap;
     Vector2 move;
     Vector2 aim;
 
@@ -32,13 +36,18 @@ public class movement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
 
-        if (inDialogue())//Cutscene Dialogue Specifically
+        if (inDialogue() || charging)//Cutscene Dialogue Specifically
         {
             move = new Vector2(0, 0);
         }
         else {
             move = context.ReadValue<Vector2>();
         }
+    }
+
+    public void OnCharge(InputAction.CallbackContext context)
+    {
+        charging = context.action.triggered;
     }
 
     public void OnAim(InputAction.CallbackContext context)
@@ -49,6 +58,7 @@ public class movement : MonoBehaviour
     private void Start()
     {
         fireAudioSource = GetComponent<AudioSource>();
+        Weap = GetComponent<weapon>();
         fireAudioSource.Stop();
         healthBar.SetMaxCorruption(health);
         manaBar.SetMaxMana(mana);
@@ -57,13 +67,40 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(!charging)
+            chargeLight.SetActive(false);
+        if (inDialogue() || charging)//Cutscene Dialogue Specifically
+        {
+            move = new Vector2(0, 0);
+        }
         // adjust animator parameters
         // will uncomment when have actual animations, for now, will set the rotation as 
         // the movement
         anim.SetFloat("Horizontal", move.x);
         anim.SetFloat("Vertical", move.y);
-        anim.SetFloat("speed", move.sqrMagnitude);
+        anim.SetFloat("speed", move.magnitude);
+        if(Mathf.Abs(move.x) > Mathf.Abs(move.y) && move.x > 0)
+        {
+            //Right
+            anim.SetInteger("Last Dir", 2);
+        }
+        else if(Mathf.Abs(move.x) > Mathf.Abs(move.y) && move.x < 0)
+        {
+            //Left
+            anim.SetInteger("Last Dir", 3);
+        }
+        else if(Mathf.Abs(move.x) < Mathf.Abs(move.y) && move.y > 0)
+        {
+            //Up
+            anim.SetInteger("Last Dir", 1);
+        }
+        else if(Mathf.Abs(move.x) < Mathf.Abs(move.y) && move.y < 0)
+        {
+            //Down
+            anim.SetInteger("Last Dir", 0);
+        }
+        anim.SetBool("Charging", charging);
+        Weap.charging = charging;
         
         if(GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
         {
@@ -121,17 +158,6 @@ public class movement : MonoBehaviour
             //firePoint.transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
             //firePoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
         }
-        if (move.x == 0 && move.y == 0 && mana <= 500)
-        {
-            if (withinFire)
-            {
-                mana += fireManaMultiplier;
-            }
-            else
-            {
-                mana += 1;
-            }
-        }
         if (mana > 500)
         {
             mana = 500;
@@ -144,6 +170,17 @@ public class movement : MonoBehaviour
     {
         // movement
         rbody.velocity = Vector2.MoveTowards(rbody.velocity, move * speed, acceleration);
+        if (charging && mana <= 500)
+        {
+            if (withinFire)
+            {
+                mana += fireManaMultiplier;
+            }
+            else
+            {
+                mana += 1;
+            }
+        }
     }
     public void TakeDamage(int damage)
     {

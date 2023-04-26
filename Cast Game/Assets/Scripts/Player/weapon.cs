@@ -12,6 +12,7 @@ public class weapon : MonoBehaviour
     public Transform firePoint;
     public GameObject fireSpreadPrefab;
     public GameObject fireBallPrefab;
+    public bool charging = false;
     private bool fired = false;
     private bool secondary = false;
     public float flameThrowerCooldown = .02f;
@@ -42,7 +43,7 @@ public class weapon : MonoBehaviour
     void Update()
     {
         movement player = gameObject.GetComponent<movement>();
-        if (fired && !inDialogue())
+        if (fired && !inDialogue() && !charging)
         {
             if (fireBallCooldownTimer <= 0)
             {
@@ -62,7 +63,7 @@ public class weapon : MonoBehaviour
                 }
             } // else flamethrower.Pause();
         } 
-        else if (secondary && !inDialogue())
+        else if (secondary && !inDialogue() && !charging)
         {
 
             if (flameThrowerCooldownTimer <= 0)

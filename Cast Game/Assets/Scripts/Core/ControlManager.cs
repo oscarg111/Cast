@@ -30,10 +30,10 @@ public class ControlManager : MonoBehaviour
             waterCType = waterSelect.currentControlScheme;
             fireCDevice = fireSelect.devices[0];
             waterCDevice = waterSelect.devices[0];
-            SceneManager.LoadScene("Main Room",LoadSceneMode.Single);
+            SceneManager.LoadScene("Main Room 1", LoadSceneMode.Single);
             connectedDevices = 0;
         }
-        if(SceneManager.GetActiveScene().name == "Main Room")
+        if(SceneManager.GetActiveScene().name == "Main Room 1")
         {
             GameObject.Find("FireMage").GetComponent<PlayerInput>().SwitchCurrentControlScheme(fireCType, fireCDevice);
             GameObject.Find("WaterMage").GetComponent<PlayerInput>().SwitchCurrentControlScheme(waterCType, waterCDevice);
