@@ -44,13 +44,13 @@ public class weaponWaterMage : MonoBehaviour
     void Update()
     {
         movementWaterMage player = gameObject.GetComponent<movementWaterMage>();
-        if (fired)
+        if (fired && !inDialogue())
         {
             if (shotCooldownTimer <= 0)
             {
                 for(int i = 0; i < currentMultiplier; i++)
                 {  
-                    if (player.mana > 0 && !inDialogue())
+                    if (player.mana > 0)
                     {
                         //movement play = player.GetComponent<movement>;
 

@@ -42,32 +42,11 @@ public class weapon : MonoBehaviour
     void Update()
     {
         movement player = gameObject.GetComponent<movement>();
-        if (fired)
-        {
-            if(flameThrowerCooldownTimer <= 0)
-            {
-                if (player.mana > 0 && !inDialogue())
-                {
-                    //movement play = player.GetComponent<movement>;
-
-                    if (!flamethrower.isPlaying) flamethrower.Play();
-                    player.mana -= 3;
-                    Shoot();
-                    flameThrowerCooldownTimer = flameThrowerCooldown;
-                }
-                else
-                {
-                    flamethrower.Stop();
-                    if (!noMana.isPlaying) noMana.Play();
-                }
-            } // else flamethrower.Pause();
-            
-        } 
-        else if (secondary)
+        if (fired && !inDialogue())
         {
             if (fireBallCooldownTimer <= 0)
             {
-                if (player.mana > 0 && !inDialogue())
+                if (player.mana > 0)
                 {
                     //movement play = player.GetComponent<movement>;
 
@@ -75,6 +54,27 @@ public class weapon : MonoBehaviour
                     player.mana -= 3;
                     ShootFireBall();
                     fireBallCooldownTimer = currentFireBallCooldown;
+                }
+                else
+                {
+                    flamethrower.Stop();
+                    if (!noMana.isPlaying) noMana.Play();
+                }
+            } // else flamethrower.Pause();
+        } 
+        else if (secondary && !inDialogue())
+        {
+
+            if (flameThrowerCooldownTimer <= 0)
+            {
+                if (player.mana > 0)
+                {
+                    //movement play = player.GetComponent<movement>;
+
+                    if (!flamethrower.isPlaying) flamethrower.Play();
+                    player.mana -= 3;
+                    Shoot();
+                    flameThrowerCooldownTimer = flameThrowerCooldown;
                 }
                 else
                 {
