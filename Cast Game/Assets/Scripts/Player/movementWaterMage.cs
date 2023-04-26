@@ -25,6 +25,8 @@ public class movementWaterMage : MonoBehaviour
     public bool charging;
     private weaponWaterMage Weap;
     public GameObject chargeLight;
+    public float invincibilityFrames;
+    private bool invincible = false;
     Vector2 aim;
     Vector2 move;
 
@@ -182,13 +184,19 @@ public class movementWaterMage : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        if (health <= 0)
+        if (!invincible)
         {
-            healthBar.SetCorruption(0);
-            Corrupt();
+            invincible = true;
+            health -= damage;
+            StartCoroutine(TakeDamage());
+            if (health <= 0)
+            {
+                health = 0;
+                healthBar.SetCorruption(0);
+                Corrupt();
+            }
+            healthBar.SetCorruption(100 - health);
         }
-        healthBar.SetCorruption(100 - health);
     }
 
     public void Corrupt()
@@ -214,5 +222,16 @@ public class movementWaterMage : MonoBehaviour
             Destroy(col.gameObject);
             mana += 500;
         }
+    }
+
+
+    IEnumerator TakeDamage()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1, .6f, .6f, .8f);
+        yield return new WaitForSeconds(invincibilityFrames / 3);
+        GetComponent<SpriteRenderer>().color = Color.white;
+        invincible = true;
+        yield return new WaitForSeconds(2 * invincibilityFrames / 3);
+        invincible = false;
     }
 }

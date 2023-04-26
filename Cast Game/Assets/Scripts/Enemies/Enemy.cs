@@ -55,20 +55,17 @@ public class Enemy : MonoBehaviour
         playerAudioSource.PlayOneShot(die,0.15f);
         Destroy(gameObject);
     }
-
-    void OnTriggerEnter2D(Collider2D hitInfo)
+    private void OnCollisionStay2D(Collision2D hitInfo)
     {
-        movement player = hitInfo.GetComponent<movement>();
-        movementWaterMage waterMage = hitInfo.GetComponent<movementWaterMage>();
+        movement player = hitInfo.gameObject.GetComponent<movement>();
+        movementWaterMage waterMage = hitInfo.gameObject.GetComponent<movementWaterMage>();
         if (player != null)
         {
             player.TakeDamage(damage);
         }
-        if(waterMage != null)
+        if (waterMage != null)
         {
             waterMage.TakeDamage(damage);
         }
-        
     }
-
 }
