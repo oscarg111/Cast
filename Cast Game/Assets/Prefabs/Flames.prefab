@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  damage: 2
+  damage: 1
   rb: {fileID: 5133360421967447181}
   spread: 25
 --- !u!95 &-6752592116590391614
