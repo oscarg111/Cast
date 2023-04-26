@@ -21382,6 +21382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cafb72e2671c40479bfcc27d8b2fcca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueUI: {fileID: 434898648}
   withinWell: 1
   waterPoint: {fileID: 1133298228}
   bulletPrefab: {fileID: 1988558737948183089, guid: 26296838788c0e44586db1ed732ecb08, type: 3}
@@ -23309,6 +23310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d522f0e0f7dafdc4594c9d2cb584424a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueUI: {fileID: 434898648}
   withinFire: 0
   fireCooldownMultiplier: 3
   fireSizeMultiplier: 2

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class weaponWaterMage : MonoBehaviour
 {
+    public GameObject DialogueUI;
     public bool withinWell = false;
     public Transform waterPoint;
     public GameObject bulletPrefab;
@@ -49,7 +50,7 @@ public class weaponWaterMage : MonoBehaviour
             {
                 for(int i = 0; i < currentMultiplier; i++)
                 {  
-                    if (player.mana > 0)
+                    if (player.mana > 0 && !inDialogue())
                     {
                         //movement play = player.GetComponent<movement>;
 
@@ -103,5 +104,10 @@ public class weaponWaterMage : MonoBehaviour
         {
             currentBullet.GetComponent<WaterBullet>().spread *= wellSpreadMultiplier;
         }
+    }
+
+    private bool inDialogue()
+    {
+        return !DialogueUI.GetComponent<DialogueSystem.DialogueHolder>().dialogueFinished;
     }
 }

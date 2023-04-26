@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class weapon : MonoBehaviour
 {
+    public GameObject DialogueUI;
     public bool withinFire = false;
     public float fireCooldownMultiplier;
     public float fireSizeMultiplier;
@@ -45,7 +46,7 @@ public class weapon : MonoBehaviour
         {
             if(flameThrowerCooldownTimer <= 0)
             {
-                if (player.mana > 0)
+                if (player.mana > 0 && !inDialogue())
                 {
                     //movement play = player.GetComponent<movement>;
 
@@ -66,7 +67,7 @@ public class weapon : MonoBehaviour
         {
             if (fireBallCooldownTimer <= 0)
             {
-                if (player.mana > 0)
+                if (player.mana > 0 && !inDialogue())
                 {
                     //movement play = player.GetComponent<movement>;
 
@@ -117,5 +118,10 @@ public class weapon : MonoBehaviour
         {
             fireBall.transform.localScale = (Vector2)fireBall.transform.localScale * fireSizeMultiplier;
         }
+    }
+
+    private bool inDialogue()
+    {
+        return !DialogueUI.GetComponent<DialogueSystem.DialogueHolder>().dialogueFinished;
     }
 }
