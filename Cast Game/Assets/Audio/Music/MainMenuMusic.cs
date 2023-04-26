@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuMusic : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class MainMenuMusic : MonoBehaviour
         if (timer >= 58f) {
             sourceOfAudio.PlayOneShot(loop);
             timer = 0f;
-        } else timer += Time.deltaTime;
+        } else if (SceneManager.GetActiveScene().name == "Main Menu") {
+            timer += Time.deltaTime; 
+        } else
+        {
+            timer = 0f;
+            sourceOfAudio.Stop();
+        }
     }
 }

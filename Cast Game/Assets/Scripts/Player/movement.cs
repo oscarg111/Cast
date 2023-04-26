@@ -69,104 +69,107 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!charging)
-            chargeLight.SetActive(false);
-        if (inDialogue() || charging)//Cutscene Dialogue Specifically
+        if (!PauseMenu.isPaused)
         {
-            move = new Vector2(0, 0);
-        }
-        // adjust animator parameters
-        // will uncomment when have actual animations, for now, will set the rotation as 
-        // the movement
-        anim.SetFloat("Horizontal", move.x);
-        anim.SetFloat("Vertical", move.y);
-        anim.SetFloat("speed", move.magnitude);
-        if(Mathf.Abs(move.x) > Mathf.Abs(move.y) && move.x > 0)
-        {
-            //Right
-            anim.SetInteger("Last Dir", 2);
-        }
-        else if(Mathf.Abs(move.x) > Mathf.Abs(move.y) && move.x < 0)
-        {
-            //Left
-            anim.SetInteger("Last Dir", 3);
-        }
-        else if(Mathf.Abs(move.x) < Mathf.Abs(move.y) && move.y > 0)
-        {
-            //Up
-            anim.SetInteger("Last Dir", 1);
-        }
-        else if(Mathf.Abs(move.x) < Mathf.Abs(move.y) && move.y < 0)
-        {
-            //Down
-            anim.SetInteger("Last Dir", 0);
-        }
-        anim.SetBool("Charging", charging);
-        Weap.charging = charging;
-        
-        if(GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
-        {
-            aimingArrow.GetComponent<SpriteRenderer>().enabled = false;
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 dir = (Vector2)(worldPosition - firePoint.transform.position);
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            firePoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
-        else
-        {
-            if(aim.magnitude >= .05f)
+            if (!charging)
+                chargeLight.SetActive(false);
+            if (inDialogue() || charging)//Cutscene Dialogue Specifically
             {
-                aimingArrow.GetComponent<SpriteRenderer>().enabled = true;
-                Vector2 worldPosition = (Vector2)firePoint.transform.position + aim;
-                Vector2 dir = (Vector2)(worldPosition - (Vector2)firePoint.transform.position);
+                move = new Vector2(0, 0);
+            }
+            // adjust animator parameters
+            // will uncomment when have actual animations, for now, will set the rotation as 
+            // the movement
+            anim.SetFloat("Horizontal", move.x);
+            anim.SetFloat("Vertical", move.y);
+            anim.SetFloat("speed", move.magnitude);
+            if (Mathf.Abs(move.x) > Mathf.Abs(move.y) && move.x > 0)
+            {
+                //Right
+                anim.SetInteger("Last Dir", 2);
+            }
+            else if (Mathf.Abs(move.x) > Mathf.Abs(move.y) && move.x < 0)
+            {
+                //Left
+                anim.SetInteger("Last Dir", 3);
+            }
+            else if (Mathf.Abs(move.x) < Mathf.Abs(move.y) && move.y > 0)
+            {
+                //Up
+                anim.SetInteger("Last Dir", 1);
+            }
+            else if (Mathf.Abs(move.x) < Mathf.Abs(move.y) && move.y < 0)
+            {
+                //Down
+                anim.SetInteger("Last Dir", 0);
+            }
+            anim.SetBool("Charging", charging);
+            Weap.charging = charging;
+
+            if (GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
+            {
+                aimingArrow.GetComponent<SpriteRenderer>().enabled = false;
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 dir = (Vector2)(worldPosition - firePoint.transform.position);
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 firePoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }
             else
             {
-                aimingArrow.GetComponent<SpriteRenderer>().enabled = false;
+                if (aim.magnitude >= .05f)
+                {
+                    aimingArrow.GetComponent<SpriteRenderer>().enabled = true;
+                    Vector2 worldPosition = (Vector2)firePoint.transform.position + aim;
+                    Vector2 dir = (Vector2)(worldPosition - (Vector2)firePoint.transform.position);
+                    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                    firePoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                }
+                else
+                {
+                    aimingArrow.GetComponent<SpriteRenderer>().enabled = false;
+                }
             }
-        }
-        if (move != Vector2.zero)
-        {
-            
-            /*if (angle == 0 || angle == 90 || angle == 180 || angle == -90)
+            if (move != Vector2.zero)
             {
-                firePoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                if (angle == 0)
-                {
-                    firePoint.transform.position = new Vector2(transform.position.x + 2, transform.position.y - .5f);
 
-                }
-                if (angle == 90)
+                /*if (angle == 0 || angle == 90 || angle == 180 || angle == -90)
                 {
-                    firePoint.transform.position = new Vector2(transform.position.x + 1.5f, transform.position.y + .5f);
-                }
-                if (angle == 180)
-                {
-                    firePoint.transform.position = new Vector2(transform.position.x - 2, transform.position.y - .5f);
+                    firePoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                    if (angle == 0)
+                    {
+                        firePoint.transform.position = new Vector2(transform.position.x + 2, transform.position.y - .5f);
 
-                }
-                if (angle == -90)
-                {
-                    firePoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
+                    }
+                    if (angle == 90)
+                    {
+                        firePoint.transform.position = new Vector2(transform.position.x + 1.5f, transform.position.y + .5f);
+                    }
+                    if (angle == 180)
+                    {
+                        firePoint.transform.position = new Vector2(transform.position.x - 2, transform.position.y - .5f);
 
-                }
-            } */
+                    }
+                    if (angle == -90)
+                    {
+                        firePoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
+
+                    }
+                } */
+            }
+
+            else
+            {
+                //firePoint.transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
+                //firePoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
+            }
+            if (mana > 500)
+            {
+                mana = 500;
+            }
+            manaBar.SetMana(mana);
+            if (rbody.velocity.x == 0f && rbody.velocity.y == 0f) fireAudioSource.Stop();
+            else if (!fireAudioSource.isPlaying && (rbody.velocity.x != 0f || rbody.velocity.y != 0f)) fireAudioSource.Play();
         }
-        
-        else
-        {
-            //firePoint.transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
-            //firePoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
-        }
-        if (mana > 500)
-        {
-            mana = 500;
-        }
-        manaBar.SetMana(mana);
-        if (rbody.velocity.x == 0f && rbody.velocity.y == 0f) fireAudioSource.Stop();
-        else if (!fireAudioSource.isPlaying && (rbody.velocity.x != 0f || rbody.velocity.y != 0f)) fireAudioSource.Play();
     }
     private void FixedUpdate()
     {

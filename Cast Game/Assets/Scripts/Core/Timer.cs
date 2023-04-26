@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class Timer : MonoBehaviour
         {
             time -= Time.deltaTime;
         }
-        if(time < 0)
+        if(time <= 0)
         {
             pause = true;
             time = 0;
@@ -32,6 +33,7 @@ public class Timer : MonoBehaviour
 
     public void RanOut()
     {
-
+        Debug.Log("Win");
+        SceneManager.LoadScene("Victory");
     }
 }
