@@ -9,6 +9,7 @@ public class MainMenuMusic : MonoBehaviour
     public AudioSource sourceOfAudio;
     public AudioClip loop;
     public float timer = 57.5f;
+    private string sceneName;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +20,12 @@ public class MainMenuMusic : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
+        sceneName = SceneManager.GetActiveScene().name;
         if (timer >= 58f) {
             sourceOfAudio.PlayOneShot(loop);
             timer = 0f;
-        } else if (SceneManager.GetActiveScene().name == "Main Menu") {
+        } else if (sceneName == "Main Menu" || sceneName == "Character Select") {
             timer += Time.deltaTime; 
         } else
         {
