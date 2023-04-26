@@ -11,6 +11,10 @@ namespace DialogueSystem
 
         private void OnEnable()
         {
+            GameObject.Find("FireMage").GetComponent<movement>().DialogueUI = gameObject;
+            GameObject.Find("FireMage").GetComponent<weapon>().DialogueUI = gameObject;
+            GameObject.Find("WaterMage").GetComponent<movementWaterMage>().DialogueUI = gameObject;
+            GameObject.Find("WaterMage").GetComponent<weaponWaterMage>().DialogueUI = gameObject;
             dialogueSeq = dialogueSequence();
             StartCoroutine(dialogueSeq);
         }
