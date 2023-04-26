@@ -22,6 +22,9 @@ public class movementWaterMage : MonoBehaviour
     public bool withinWell;
     public int wellManaMultiplier;
     public GameObject DialogueUI;
+    public bool charging;
+    private weaponWaterMage Weap;
+    public GameObject chargeLight;
     Vector2 aim;
     Vector2 move;
 
@@ -30,13 +33,20 @@ public class movementWaterMage : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (inDialogue())//Cutscene Dialogue Specifically
+
+        if (inDialogue() || charging)//Cutscene Dialogue Specifically
         {
             move = new Vector2(0, 0);
         }
-        else {
+        else
+        {
             move = context.ReadValue<Vector2>();
         }
+    }
+
+    public void OnCharge(InputAction.CallbackContext context)
+    {
+        charging = context.action.triggered;
     }
 
     public void OnAim(InputAction.CallbackContext context)
@@ -46,6 +56,7 @@ public class movementWaterMage : MonoBehaviour
 
     private void Start()
     {
+        Weap = GetComponent<weaponWaterMage>();
         waterAudioSource = GetComponent<AudioSource>();
         waterAudioSource.Pause();
         healthBar.SetMaxCorruption(health);
@@ -55,13 +66,40 @@ public class movementWaterMage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!charging)
+            chargeLight.SetActive(false);
+        if (inDialogue() || charging)//Cutscene Dialogue Specifically
+        {
+            move = new Vector2(0, 0);
+        }
         // adjust animator parameters
         // will uncomment when have actual animations, for now, will set the rotation as 
         // the movement
         anim.SetFloat("Horizontal", move.x);
         anim.SetFloat("Vertical", move.y);
-        anim.SetFloat("Speed", move.sqrMagnitude);
+        anim.SetFloat("Speed", move.magnitude);
+        if (Mathf.Abs(move.x) > Mathf.Abs(move.y) && move.x > 0)
+        {
+            //Right
+            anim.SetInteger("Last Dir", 2);
+        }
+        else if (Mathf.Abs(move.x) > Mathf.Abs(move.y) && move.x < 0)
+        {
+            //Left
+            anim.SetInteger("Last Dir", 3);
+        }
+        else if (Mathf.Abs(move.x) < Mathf.Abs(move.y) && move.y > 0)
+        {
+            //Up
+            anim.SetInteger("Last Dir", 1);
+        }
+        else if (Mathf.Abs(move.x) < Mathf.Abs(move.y) && move.y < 0)
+        {
+            //Down
+            anim.SetInteger("Last Dir", 0);
+        }
+        anim.SetBool("Charging", charging);
+        Weap.charging = charging;
 
         if (GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
         {
@@ -118,17 +156,6 @@ public class movementWaterMage : MonoBehaviour
             waterPoint.transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
             waterPoint.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 2);
         }*/
-        if (move.x == 0 && move.y == 0 && mana <= 500)
-        {
-            if(withinWell)
-            {
-                mana += wellManaMultiplier;
-            }
-            else
-            {
-                mana += 1;
-            }
-        }
         if(mana > 500)
         {
             mana = 500;
@@ -141,6 +168,17 @@ public class movementWaterMage : MonoBehaviour
     {
         // movement
         rbody.velocity = Vector2.MoveTowards(rbody.velocity, move * speed, acceleration);
+        if (charging && mana <= 500)
+        {
+            if (withinWell)
+            {
+                mana += wellManaMultiplier;
+            }
+            else
+            {
+                mana += 1;
+            }
+        }
     }
     public void TakeDamage(int damage)
     {

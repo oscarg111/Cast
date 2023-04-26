@@ -19,6 +19,7 @@ public class weaponWaterMage : MonoBehaviour
     private int currentMultiplier;
     private float shotCooldownTimer = 0;
     private float currentCooldown;
+    public bool charging = false;
 
     /** audio */
     public AudioSource weaponAudio;
