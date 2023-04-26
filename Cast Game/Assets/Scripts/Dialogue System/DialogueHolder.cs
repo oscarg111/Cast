@@ -53,6 +53,7 @@ namespace DialogueSystem
             if (hordeSpawn != null)
             {
                 hordeSpawn.SetActive(true);
+                GameObject.Find("Timer").GetComponent<Timer>().pause = false;
             }
             gameObject.SetActive(false);
             

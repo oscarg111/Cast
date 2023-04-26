@@ -1496,6 +1496,10 @@ PrefabInstance:
       propertyPath: time
       value: 600
       objectReference: {fileID: 0}
+    - target: {fileID: 7913955376495921670, guid: 43ddc16ec210603479a969657481e0fb, type: 3}
+      propertyPath: pause
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7913955376495921689, guid: 43ddc16ec210603479a969657481e0fb, type: 3}
       propertyPath: m_Name
       value: Timer
