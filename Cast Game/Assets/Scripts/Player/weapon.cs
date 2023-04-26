@@ -118,6 +118,7 @@ public class weapon : MonoBehaviour
         if(withinFire)
         {
             fireBall.transform.localScale = (Vector2)fireBall.transform.localScale * fireSizeMultiplier;
+            fireBall.GetComponent<Bullet>().damage = 20;
         }
     }
 
