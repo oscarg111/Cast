@@ -13,6 +13,7 @@ public class movementWaterMage : MonoBehaviour
     public Animator anim;
     private bool left;
     private bool up;
+    public int manaRate;
     public int health = 100;
     public CorruptionBar healthBar;
     public ManaBar manaBar;
@@ -194,11 +195,11 @@ public class movementWaterMage : MonoBehaviour
             }
             if (withinWell)
             {
-                mana += wellManaMultiplier;
+                mana += wellManaMultiplier * manaRate;
             }
             else
             {
-                mana += 1;
+                mana += manaRate;
             }
         }
     }

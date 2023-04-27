@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d57818e1e24cd4f966c80a647f3ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 14
+  speed: 20
   rb: {fileID: 4921451130979354902}
-  spread: 4
-  decelRate: 28
+  spread: 5
+  decelRate: 50
   steam: {fileID: 2933143754491798047, guid: be1caa5d09a994b409d73f334ff46168, type: 3}

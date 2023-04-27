@@ -1187,7 +1187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &190853138
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1938,7 +1938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7913955376495921670, guid: 43ddc16ec210603479a969657481e0fb, type: 3}
       propertyPath: time
-      value: 600
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7913955376495921670, guid: 43ddc16ec210603479a969657481e0fb, type: 3}
       propertyPath: pause
@@ -80319,6 +80319,7 @@ MonoBehaviour:
   mana: 500
   rbody: {fileID: 1175663631}
   anim: {fileID: 1175663628}
+  manaRate: 2
   health: 100
   healthBar: {fileID: 801947739}
   manaBar: {fileID: 798275587}
@@ -82972,6 +82973,7 @@ MonoBehaviour:
   mana: 500
   rbody: {fileID: 1628932163}
   anim: {fileID: 1628932166}
+  manaRate: 2
   health: 100
   healthBar: {fileID: 771665595}
   manaBar: {fileID: 1942096041}
@@ -110075,7 +110077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectToCreate: {fileID: 2733694096122091176, guid: c95964c1033d93648a47416ff76d0451, type: 3}
   ObjectToSpawnAround: {fileID: 519420028}
-  normalCooldown: 8
+  normalCooldown: 4
   spawnArea:
     serializedVersion: 2
     m_Bits: 512

@@ -218,9 +218,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireMage: {fileID: 0}
   waterMage: {fileID: 0}
-  speed: 3.4
-  chase_distance: 40
-  accel: 20
+  speed: 4
+  chase_distance: 30
+  accel: 35
   enemyAudioSource: {fileID: 0}
 --- !u!50 &7286895416364328041
 Rigidbody2D:
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df4ebfc8f7370d4685990151339174c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
+  health: 250
   damage: 20
   burnStacks: 0
   enemyAudioSource: {fileID: 0}

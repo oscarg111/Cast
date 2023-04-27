@@ -12,6 +12,7 @@ public class movement : MonoBehaviour
     public Animator anim;
     private bool left;
     private bool up;
+    public int manaRate;
     public int health = 100;
     public CorruptionBar healthBar;
     public ManaBar manaBar;
@@ -195,11 +196,11 @@ public class movement : MonoBehaviour
             }
             if (withinFire)
             {
-                mana += fireManaMultiplier;
+                mana += fireManaMultiplier * manaRate;
             }
             else
             {
-                mana += 1;
+                mana += manaRate;
             }
         }
     }
