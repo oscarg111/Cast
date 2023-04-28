@@ -2640,7 +2640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000015258789}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &424258703
@@ -83624,7 +83624,7 @@ MonoBehaviour:
   fireBallPrefab: {fileID: 5665222721183121305, guid: a8de04f7f314aec45933329a0df728b9, type: 3}
   charging: 0
   flameThrowerCooldown: 0.02
-  fireBallCooldown: 1
+  fireBallCooldown: 0.8
   flamethrower: {fileID: 1997173664}
   noMana: {fileID: 709440300}
 --- !u!82 &1628932168

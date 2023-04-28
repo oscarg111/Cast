@@ -52,7 +52,7 @@ public class weapon : MonoBehaviour
                     //movement play = player.GetComponent<movement>;
 
                     if (!flamethrower.isPlaying) flamethrower.Play();
-                    player.mana -= 3;
+                    player.mana -= 8;
                     ShootFireBall();
                     fireBallCooldownTimer = currentFireBallCooldown;
                 }
@@ -73,7 +73,7 @@ public class weapon : MonoBehaviour
                     //movement play = player.GetComponent<movement>;
 
                     if (!flamethrower.isPlaying) flamethrower.Play();
-                    player.mana -= 3;
+                    player.mana -= 8;
                     Shoot();
                     flameThrowerCooldownTimer = flameThrowerCooldown;
                 }

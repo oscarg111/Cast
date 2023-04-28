@@ -56,7 +56,7 @@ public class weaponWaterMage : MonoBehaviour
                         //movement play = player.GetComponent<movement>;
 
                         if (!weaponAudio.isPlaying) weaponAudio.Play();
-                        player.mana -= 3;
+                        player.mana -= 2;
                         Shoot();
                         shotCooldownTimer = currentCooldown;
                     }
