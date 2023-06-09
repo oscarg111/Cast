@@ -80570,7 +80570,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -83502,7 +83502,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -110708,7 +110708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f15bf8ff84f7a4a8e630aad23d794c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectToCreate: {fileID: 2733694096122091176, guid: c95964c1033d93648a47416ff76d0451, type: 3}
+  ObjectToCreate: {fileID: 2733694096122091176, guid: d6fba437da222fa418cbfef31a825d07, type: 3}
   ObjectToSpawnAround: {fileID: 519420028}
   normalCooldown: 4
   spawnArea:

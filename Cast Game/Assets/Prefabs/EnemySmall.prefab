@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 855158505780052507}
   - component: {fileID: 8625231755495971554}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: EnemySmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireMage: {fileID: 0}
   waterMage: {fileID: 0}
-  speed: 4
+  speed: 12
   chase_distance: 30
   accel: 35
   enemyAudioSource: {fileID: 0}
@@ -234,7 +234,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.2
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -351,8 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df4ebfc8f7370d4685990151339174c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
-  damage: 20
+  health: 50
+  damage: 10
   burnStacks: 0
   enemyAudioSource: {fileID: 0}
   playerAudioSource: {fileID: 0}
